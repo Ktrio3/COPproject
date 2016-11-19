@@ -1,0 +1,3 @@
+Kevin Dennis | U | 987654321 | 11/03/1995 | M | Computer Science
+Ahmad Babeian Jelodar | G | TA | 192837465 | 01/23/1990 | M | Artificial Intelligence
+Vasthy Peralta | U | 564738291 | 11/11/1111 | F | Computer Science
