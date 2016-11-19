@@ -43,14 +43,14 @@ int main(void)
 
   string line;
 
-  string prefix;
+  string prefix2;
   int number;
   int lvl;
-  file >> prefix;
+  file >> prefix2;
   file >> number;
   file >> lvl;
 
-  cout << prefix << number;
+  cout << prefix2 << number;
 
 
   //Once course read in, add students by UID in file
