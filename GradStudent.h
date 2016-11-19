@@ -18,7 +18,7 @@ using namespace std;
 class GradStudent : public Student
 {
 	public:
-		GradStudent(int UnivID, string fullname,int BD, char gend, string lvl, string prog); //Prototype for constructor
+		GradStudent(int UnivID, string fullname, string BD, char gend, string lvl, string prog); //Prototype for constructor
 		void choosePrgm(string prog); //Prototype for choose graduate program function
 		void print(); //Prototype for print function
 		~GradStudent(); //Prototype for destructor

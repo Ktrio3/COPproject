@@ -16,7 +16,7 @@ using namespace std;
 class UGradStudent : public Student
 {
 	public:
-		UGradStudent(int UnivID, string fullname,int BD, char gend, string lvl, string maj); //Prototype for constructor
+		UGradStudent(int UnivID, string fullname, string BD, char gend, string lvl, string maj); //Prototype for constructor
 		void declareMjr(string maj); //Prototype for declare major function
 		void print(); //Prototype for print function
 		~UGradStudent(); //Prototype for destructor
