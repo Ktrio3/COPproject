@@ -1,29 +1,26 @@
-//********************************************
-// File name: Person.h
-// Purpose: Header file for Person class
+//******************************************************
+// File name: TeachingAst.h
+// Purpose: Header file for Teaching Assistant class
 // Authors: Kevin Dennis and V. Liana Peralta
-//********************************************
+//******************************************************
 
 #ifndef TEACHINGAST_H
 #define TEACHINGAST_H
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include "Course.h"
 
-using namespace std;
-
-class TeachingAst
+class TeachingAst : public GradStudent
 {
 	public:
-		TeachingAst(int UnivID, string fullname, int BD, char gend); //Prototype for constructor
-		int getUID() const;
+		TeachingAst(int UnivID, String fullname,int BD, char gend, String lvl); //Prototype for constructor
 		void print(); //Prototype for print function
 		~TeachingAst(); //Prototype for destructor
-
+	
 	protected:
-		int UID; //Integer for University ID number
-		string name; //String for full name
-		int birthdate; //Integer for birthdate (format: MMDDYYYY)
-		char gender; //Character for gender (either F or M)
-};
+		String project; //String for program
+		vector< const Course *> TACourses; //Vector of courses the teaching assistant is a TA for
 #endif
+};
