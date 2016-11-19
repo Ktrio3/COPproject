@@ -8,8 +8,13 @@
 #include <string>
 #include "GradStudent.h"
 
+using namespace std;
+
 //Constructor for graduate student
-GradStudent::GradStudent(int UnivID, String fullname,int BD, char gend, String lvl) : Student(UnivID, fullname, BD, gend, lvl){};
+GradStudent::GradStudent(int UnivID, String fullname,int BD, char gend, String lvl, String prog) : Student(UnivID, fullname, BD, gend, lvl)
+{
+	program = prog;
+}
 
 //Function for assigning a program to a graduate student
 void GradStudent::choosePrgm(String prog)

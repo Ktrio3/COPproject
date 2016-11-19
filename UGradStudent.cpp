@@ -8,8 +8,13 @@
 #include <string>
 #include UGradStudent.h
 
+using namespace std;
+
 //Constructor for undergraduate student
-UGradStudent::UGradStudent(int UnivID, String fullname,int BD, char gend, String lvl) : Student(UnivID, fullname, BD, gend, lvl){};
+UGradStudent::UGradStudent(int UnivID, String fullname,int BD, char gend, String lvl, String maj) : Student(UnivID, fullname, BD, gend, lvl)
+{
+	major = maj;
+}
 
 //Function for declaring or changing major
 void UGradStudent::declareMjr(String maj)

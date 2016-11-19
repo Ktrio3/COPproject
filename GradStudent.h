@@ -13,6 +13,8 @@
 
 using namespace std;
 
+using namespace std;
+
 class GradStudent : public Student
 {
 	public:

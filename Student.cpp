@@ -24,6 +24,11 @@ void Student::registerCrs(Course *course)
 	Schedule.push_back(course);
 }
 
+Course &Student::getSchedule(int num)
+{
+	return *Schedule[num];
+}
+
 //Print Student Information
 void Student::print()
 {

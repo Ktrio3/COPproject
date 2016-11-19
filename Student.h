@@ -15,11 +15,14 @@
 
 using namespace std;
 
+using namespace std;
+
 class Student : public Person
 {
 	public:
-		Student(int UnivID, string fullname, int BD, char gend, string lvl); //Prototype for constructor
-		void registerCrs(Course *course); //Prototype for register course function
+		Student(int UnivID, string fullname,int BD, char gend, string lvl); //Prototype for constructor
+		void registerCrs(int Course *course); //Prototype for register course function
+		Course &getSchedule(int num); //Prototype for getSchedule function
 		void print(); //Prototype for print function
 		~Student(); //Prototype for destructor
 
