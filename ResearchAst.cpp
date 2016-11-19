@@ -8,8 +8,13 @@
 #include <string>
 #include "ResearchAst.h"
 
+using namespace std;
+
 //Constructor for research assistant
-ResearchAst::ResearchAst(int UnivID, String fullname,int BD, char gend, String lvl) : GradStudent(UnivID, fullname, BD, gend, lvl){};
+ResearchAst::ResearchAst(int UnivID, String fullname,int BD, char gend, String lvl, String prog, String proj) : GradStudent(UnivID, fullname, BD, gend, lvl, prog)
+{
+	project = proj;
+}
 
 //Function to assign a project to research assistant
 void ResearchAst::assignProj(String proj)

@@ -12,11 +12,14 @@
 #include <vector>
 #include "Course.h"
 
+using namespace std;
+
 class Student : public Person
 {
 	public:
 		Student(int UnivID, String fullname,int BD, char gend, String lvl); //Prototype for constructor
 		void registerCrs(int Course *course); //Prototype for register course function
+		Course &getSchedule(int num); //Prototype for getSchedule function
 		void print(); //Prototype for print function
 		~Student(); //Prototype for destructor
 	

@@ -10,6 +10,8 @@
 #include "Course.h"
 #include "Student.h"
 
+using namespace std;
+
 //Constructor for student
 Student::Student(int UnivID, String fullname,int BD, char gend, String lvl) : Person(UnivID, fullname, BD, gend)
 {
@@ -20,6 +22,11 @@ Student::Student(int UnivID, String fullname,int BD, char gend, String lvl) : Pe
 void Student::registerCrs(int Course *course)
 {
 	Schedule.push_back(course);
+}
+
+Course &Student::getSchedule(int num)
+{
+	return *Schedule[num];
 }
 
 //Print Student Information

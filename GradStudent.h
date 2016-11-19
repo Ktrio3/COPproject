@@ -10,10 +10,12 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 class GradStudent : public Student
 {
 	public:
-		GradStudent(int UnivID, String fullname,int BD, char gend, String lvl); //Prototype for constructor
+		GradStudent(int UnivID, String fullname,int BD, char gend, String lvl, String prog); //Prototype for constructor
 		void choosePrgm(String prog); //Prototype for choose graduate program function
 		void print(); //Prototype for print function
 		~GradStudent(); //Prototype for destructor
