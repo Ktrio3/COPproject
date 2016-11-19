@@ -18,17 +18,6 @@ Student::Student(int UnivID, string fullname,int BD, char gend, string lvl) : Pe
 	level = lvl;
 }
 
-//Function for student to enroll in courses
-void Student::registerCrs(Course *course)
-{
-	Schedule.push_back(course);
-}
-
-Course &Student::getSchedule(int num)
-{
-	return *Schedule[num];
-}
-
 //Print Student Information
 void Student::print()
 {

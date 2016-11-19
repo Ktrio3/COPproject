@@ -6,18 +6,18 @@
 
 #include <iostream>
 #include <string>
-#include UGradStudent.h
+#include "UGradStudent.h"
 
 using namespace std;
 
 //Constructor for undergraduate student
-UGradStudent::UGradStudent(int UnivID, String fullname,int BD, char gend, String lvl, String maj) : Student(UnivID, fullname, BD, gend, lvl)
+UGradStudent::UGradStudent(int UnivID, string fullname,int BD, char gend, string lvl, string maj) : Student(UnivID, fullname, BD, gend, lvl)
 {
 	major = maj;
 }
 
 //Function for declaring or changing major
-void UGradStudent::declareMjr(String maj)
+void UGradStudent::declareMjr(string maj)
 {
 	major = maj;
 }
@@ -25,7 +25,7 @@ void UGradStudent::declareMjr(String maj)
 //Print function for undergraduate student
 void UGradStudent::print()
 {
-	
+
 }
 
 //Destructor for undergraduate student

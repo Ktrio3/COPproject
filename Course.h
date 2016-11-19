@@ -11,6 +11,10 @@
 
 using namespace std;
 
+class Student;
+class Teacher;
+class TeachingAst;
+
 class Course
 {
 public:

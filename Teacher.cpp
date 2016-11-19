@@ -11,7 +11,7 @@
 #include "Teacher.h"
 
 //Constructor for teacher
-Teacher::Teacher(int UnivID, String fullname,int BD, char gend, String rol) : Person(UnivId, fullname, BD, gend)
+Teacher::Teacher(int UnivID, string fullname,int BD, char gend, string rol) : Person(UnivID, fullname, BD, gend)
 {
 	role = rol;
 }
@@ -19,13 +19,13 @@ Teacher::Teacher(int UnivID, String fullname,int BD, char gend, String rol) : Pe
 //Function for assigning grades to students
 void Teacher::assignGrade(int crsID, int UnivID, int grade)
 {
-	
+
 }
 
 //Print function for teacher
 void Teacher::print()
 {
-	
+
 }
 
 //Destructor for teacher

@@ -11,13 +11,13 @@
 using namespace std;
 
 //Constructor for graduate student
-GradStudent::GradStudent(int UnivID, String fullname,int BD, char gend, String lvl, String prog) : Student(UnivID, fullname, BD, gend, lvl)
+GradStudent::GradStudent(int UnivID, string fullname,int BD, char gend, string lvl, string prog) : Student(UnivID, fullname, BD, gend, lvl)
 {
 	program = prog;
 }
 
 //Function for assigning a program to a graduate student
-void GradStudent::choosePrgm(String prog)
+void GradStudent::choosePrgm(string prog)
 {
 	program = prog;
 }
@@ -25,7 +25,7 @@ void GradStudent::choosePrgm(String prog)
 //Print function for graduate student
 void GradStudent::print()
 {
-	
+
 }
 
 //Destructor for graduate student

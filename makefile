@@ -1,10 +1,10 @@
 all: test
 
-test: Course.o Person.o Student.o Account.o
-		g++ -o test Course.o Person.o Student.o TeachingAst.o ResearchAst.o GradStudent.o UGradStudent.o Department.o Teacher.o testSystem.o
+test: Course.o Person.o Student.o TeachingAst.o ResearchAst.o GradStudent.o UGradStudent.o Department.o Teacher.o main.o
+		g++ -o test Course.o Person.o Student.o TeachingAst.o ResearchAst.o GradStudent.o UGradStudent.o Department.o Teacher.o main.o
 
-testSystem.o: Course.h Person.h Student.h TeachingAst.h ResearchAst.h GradStudent.h UGradStudent.h Department.h Teacher.h testSystem.cpp
-		g++ -c testSystem.cpp
+main.o: Course.h Person.h Student.h TeachingAst.h ResearchAst.h GradStudent.h UGradStudent.h Department.h Teacher.h main.cpp
+		g++ -c main.cpp
 
 Course.o: Student.h Teacher.h TeachingAst.h Course.h Course.cpp
 		g++ -c Course.cpp
@@ -24,7 +24,7 @@ UGradStudent.o: Student.h UGradStudent.h UGradStudent.cpp
 Teacher.o: Person.h Teacher.h Teacher.cpp
 		g++ -c Teacher.cpp
 
-Student.o: Person.h S Student.h tudent.cpp
+Student.o: Person.h Student.h Student.cpp
 		g++ -c Student.cpp
 
 Department.o: Department.cpp Department.h Person.h

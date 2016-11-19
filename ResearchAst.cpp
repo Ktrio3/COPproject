@@ -11,13 +11,13 @@
 using namespace std;
 
 //Constructor for research assistant
-ResearchAst::ResearchAst(int UnivID, String fullname,int BD, char gend, String lvl, String prog, String proj) : GradStudent(UnivID, fullname, BD, gend, lvl, prog)
+ResearchAst::ResearchAst(int UnivID, string fullname,int BD, char gend, string lvl, string prog, string proj) : GradStudent(UnivID, fullname, BD, gend, lvl, prog)
 {
 	project = proj;
 }
 
 //Function to assign a project to research assistant
-void ResearchAst::assignProj(String proj)
+void ResearchAst::assignProj(string proj)
 {
 	project = proj;
 }
@@ -25,7 +25,7 @@ void ResearchAst::assignProj(String proj)
 //Print function for research assistant
 void ResearchAst::print()
 {
-	
+
 }
 
 //Destructor for research assistant

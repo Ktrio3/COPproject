@@ -9,18 +9,20 @@
 
 #include <iostream>
 #include <string>
+#include "GradStudent.h"
 
 using namespace std;
 
 class ResearchAst : public GradStudent
 {
 	public:
-		ResearchAst(int UnivID, String fullname,int BD, char gend, String lvl, String prog, String proj); //Prototype for constructor
-		void assignProj(String proj); //Prototype for assign project function
+		ResearchAst(int UnivID, string fullname,int BD, char gend, string lvl, string prog, string proj); //Prototype for constructor
+		void assignProj(string proj); //Prototype for assign project function
 		void print(); //Prototype for print function
 		~ResearchAst(); //Prototype for destructor
-	
+
 	protected:
-		String project; //String for program
-#endif
+		string project; //string for program
+
 };
+#endif
