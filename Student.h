@@ -11,17 +11,20 @@
 #include <string>
 #include <vector>
 #include "Course.h"
+#include "Person.h"
+
+using namespace std;
 
 class Student : public Person
 {
 	public:
-		Student(int UnivID, String fullname,int BD, char gend, String lvl); //Prototype for constructor
-		void registerCrs(int Course *course); //Prototype for register course function
+		Student(int UnivID, string fullname, int BD, char gend, string lvl); //Prototype for constructor
+		void registerCrs(Course *course); //Prototype for register course function
 		void print(); //Prototype for print function
 		~Student(); //Prototype for destructor
-	
+
 	protected:
-		String level; //String for student level (e.g. PhD, Post-BS/A)
+		string level; //String for student level (e.g. PhD, Post-BS/A)
 		vector< const Course *> Schedule; //List of courses the student is registered for
-#endif
 };
+#endif

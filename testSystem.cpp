@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <iomanip>
 
 //#include "Person.h"
 //#include "Student.h"
@@ -13,7 +14,7 @@
 //#include "GradStudent.h"
 //#include "ResearchAst.h"
 //#include "TeachingAst.h"
-//#include "Course.h"
+#include "Course.h"
 //#include "Department.h"
 
 using namespace std;
@@ -41,16 +42,18 @@ int main(void)
   //Read in courses
   file.open("Courses.txt");
 
-  string line;
+  while(!file.eof())
+  {
+    string prefix2;
+    int number;
+    int lvl;
+    file >> prefix2;
+    file >> number;
+    file >> lvl;
 
-  string prefix2;
-  int number;
-  int lvl;
-  file >> prefix2;
-  file >> number;
-  file >> lvl;
+    cout << prefix2 << number;
+  }
 
-  cout << prefix2 << number;
 
 
   //Once course read in, add students by UID in file

@@ -10,14 +10,16 @@
 #include "Course.h"
 #include "Student.h"
 
+using namespace std;
+
 //Constructor for student
-Student::Student(int UnivID, String fullname,int BD, char gend, String lvl) : Person(UnivID, fullname, BD, gend)
+Student::Student(int UnivID, string fullname,int BD, char gend, string lvl) : Person(UnivID, fullname, BD, gend)
 {
 	level = lvl;
 }
 
 //Function for student to enroll in courses
-void Student::registerCrs(int Course *course)
+void Student::registerCrs(Course *course)
 {
 	Schedule.push_back(course);
 }
@@ -25,7 +27,7 @@ void Student::registerCrs(int Course *course)
 //Print Student Information
 void Student::print()
 {
-	
+
 }
 
 //Destructor for student
