@@ -57,7 +57,7 @@ private:
   string subject;
   int number;
   int credits;
-  char lvl;
+  string lvl;
   string title;
   vector<Teacher *> instructors;
   vector<TeachingAst *> TAs;

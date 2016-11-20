@@ -25,6 +25,7 @@ int main(void)
   map<int, Student *> students; //May want to make map with UID as key.
   typedef std::map<int, Student *>::iterator student_iter; //For iterating over students map
   map<int, Teacher *> teachers; //Map will make it very easier to add to course after reading.
+  typedef std::map<int, Teacher *>::iterator teacher_iter; //For iterating over students map
   vector<Course *> courses;
   vector<Department *> departments;
 
@@ -141,6 +142,19 @@ int main(void)
     cout << date << endl;
     cout << gender << endl << endl;
   }
+  
+    //Declare and instantiate teacher objects
+    Teacher *teacher = new Teacher(stoi(id), name, date, gender, rol);
+    teachers.insert(make_pair(stoi(id), teacher));
+
+  //Print teachers
+  for(teacher_iter iterator_t = teachers.begin(); iterator_t != teachers.end(); iterator_t++) {
+  	Teacher *teach = iterator_t->second;
+    if(teach != nullptr)
+    {
+      teach->print();
+    }
+  }
 
   file.close();
 
@@ -152,23 +166,51 @@ int main(void)
   {
     //Variables for Course constructor
     string subject = "";
-    string name;
-    string role;
-    string id;
-    string date;
-    string gender;
+    int number;
+    int credits;
+    string lvl;
+    string title;
+    string teachers;
+    string teachAsts;
+    string students; 
     string junk; //Used to discard extra \n char at end of line
 
     getline(file, name, '|');
 
-    if(name == "") //End of file if no name found
+    if(subject == "") //End of file if no name found
       break;
 
-    getline(file, role, '|');
-    getline(file, id, '|');
-    getline(file, date, '|');
-    getline(file, gender, '|');
+    getline(file, number, '|');
+    getline(file, credits, '|');
+    getline(file, lvl, '|');    
+    getline(file, title, '|');
+    getline(file, teachers, '|');
+    getline(file, teachAsts, '|');
+    getline(file, students, '|');
     getline(file, junk); //Ignore \n
+    
+    //Create Course objects
+
+	//Seperate teachers string into separate teachers
+	int start = 0;
+	int end = teachers.find(',');
+	string token = "";
+	
+	while (end != -1)
+	{
+		token = teachers.substr(start, end);
+		start = end + 1;
+		end = teachers.find(',', start);
+		if (end == -1)
+		{
+			token = teachers.substr(start, teachers.length());
+		}
+		
+	}
+
+	//Seperate teachAsts string into separate TAs
+	
+	//Seperate students string into separate students
 
     cout << name << endl;
     cout << role << endl;

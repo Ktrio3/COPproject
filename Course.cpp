@@ -103,12 +103,12 @@ int Course::getCredits()
   return credits;
 }
 
-void Course::setLvl(char newLvl)
+void Course::setLvl(string newLvl)
 {
   lvl = newLvl;
 }
 
-char Course::getLvl()
+string Course::getLvl()
 {
   return lvl;
 }
