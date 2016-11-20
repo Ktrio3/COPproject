@@ -22,6 +22,12 @@ void UGradStudent::declareMjr(string maj)
 	major = maj;
 }
 
+//Function for declaring or changing major
+string UGradStudent::getMjr()
+{
+	return major;
+}
+
 //Print function for undergraduate student
 void UGradStudent::print()
 {

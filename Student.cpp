@@ -22,7 +22,7 @@ Student::Student(int UnivID, string fullname, string BD, string gend, string lvl
 void Student::print()
 {
 	this->Person::print();
-	cout << " Degree Type:" << level;
+	cout << " Degree Type: " << level;
 }
 
 string Student::getLvl()

@@ -22,6 +22,8 @@ class Teacher : public Person
 	public:
 		Teacher(int UnivID, string fullname, string BD, string gend, string rol); //Prototype for constructor
 		void assignGrade(int crsID, int UnivID, int grade); //Prototype for assign grade function
+		string getRole();
+		int numCourses();
 		void print(); //Prototype for print function
 		~Teacher(); //Prototype for destructor
 
