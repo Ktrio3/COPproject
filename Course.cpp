@@ -52,6 +52,7 @@ void Course::assignTeacher(Teacher *teacher)
 void Course::addStudent(Student *student)
 {
   roster.push_back(student);
+  this->addGrade(student->getUID());
 }
 
 /*************************************
@@ -170,7 +171,10 @@ void Course::print()
 **************************************/
 void Course::printRoster()
 {
-  //Name Unumber
+  for(Student *Student : roster)
+  {
+    cout << Student->getName() << " UID: U" << Student->getUID() << endl;
+  }
 }
 
 /*************************************
@@ -181,7 +185,11 @@ void Course::printRoster()
 **************************************/
 void Course::printGradebook()
 {
-  //Name Unumber grade%
+  for(Student *Student : roster)
+  {
+    cout << Student->getName() << " UID: U" << Student->getUID() << " Grade: "
+      << this->getGrade(Student->getUID()) << "%" << endl;
+  }
 }
 
 /*************************************

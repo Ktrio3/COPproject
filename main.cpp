@@ -196,16 +196,18 @@ int main(void)
   	while (end != -1)
   	{
   		token = instructors.substr(start, end);
-  		start = end + 1;
-  		end = instructors.find(',', start);
+  		course->assignTeacher(teachers[stoi(token)]);	//Assign each teacher to course based on UID
+
+      start = end + 1;
+      end = instructors.find(',', start);
+      //If at end of list, add final value
   		if (end == -1)
   		{
   			token = instructors.substr(start, instructors.length());
   		}
-  		course->assignTeacher(teachers[token].second);	//Assign each teacher to course based on UID
     }
 
-	//Seperate teachAsts string into separate TAs
+	  //Seperate teachAsts string into separate TAs
   	start = 0;
   	end = teachAsts.find(',');
 
@@ -214,27 +216,44 @@ int main(void)
   		token = teachAsts.substr(start, end);
   		start = end + 1;
   		end = teachAsts.find(',', start);
-  		if (end == -1)
+
+      TeachingAst *TA = dynamic_cast < TeachingAst * > (students[stoi(token)]);
+      if(TA != nullptr)
+      {
+        course->assignTA(TA);	//Assign each TA to course based on UID
+      }
+
+      //If at end of list, add final value
+      if (end == -1)
   		{
   			token = teachAsts.substr(start, teachAsts.length());
+
+        TeachingAst *TA = dynamic_cast < TeachingAst * > (students[stoi(token)]);
+        if(TA != nullptr)
+        {
+          course->assignTA(TA);	//Assign each TA to course based on UID
+        }
   		}
-  		course->assignTA(students[token].second);	//Assign each TA to course based on UID
     }
 
-	//Seperate pupils string into separate students
-	start = 0;
+  	//Seperate pupils string into separate students
+  	start = 0;
   	end = pupils.find(',');
 
   	while (end != -1)
   	{
   		token = pupils.substr(start, end);
   		start = end + 1;
-  		end = pupils.find(',', start);
+
+  		course->addStudent(students[stoi(token)]);	//Add each student to course roster based on UID
+
+      end = pupils.find(',', start);
+      //If at end of list, add final value
   		if (end == -1)
   		{
   			token = pupils.substr(start, pupils.length());
+        course->addStudent(students[stoi(token)]);
   		}
-  		course->addStudent(students[token].second);	//Add each student to course roster based on UID
     }
   }
 
@@ -247,21 +266,23 @@ int main(void)
       course->print();
       cout << endl;
   }
+  cout << endl;
 
   //Read in departments
+
   //Once in, add members by UID and course by subj/num
-
-  //Print students
-
-  //Print teachers
-
-  //Print courses
 
   //Print departments
 
   //Print the students in a course
+  cout << "Printing students in " << courses[0]->getTitle() << ":" << endl;
+  courses[0]->printRoster();
+  cout << endl;
 
   //Print the grades for a student in the course
+  cout << "Printing grades for students in " << courses[0]->getTitle() << ":" << endl;
+  courses[0]->printGradebook();
+  cout << endl;
 
   //Change the grade for a student in the course
 
