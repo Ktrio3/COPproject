@@ -22,10 +22,16 @@ void GradStudent::choosePrgm(string prog)
 	program = prog;
 }
 
+string GradStudent::getPrgm()
+{
+	return program;
+}
+
 //Print function for graduate student
 void GradStudent::print()
 {
-
+	this->Student::print();
+	cout << " Program: " << this->getPrgm();
 }
 
 //Destructor for graduate student

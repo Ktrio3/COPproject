@@ -23,6 +23,8 @@ class Student : public Person
 		void registerCrs(Course *course); //Prototype for register course function
 		Course &getSchedule(int num); //Prototype for getSchedule function
 		virtual void print(); //Prototype for print function
+		string getLvl();
+		void setLvl(string lvl);
 		virtual ~Student(); //Prototype for destructor
 
 	protected:

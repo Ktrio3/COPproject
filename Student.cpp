@@ -21,7 +21,18 @@ Student::Student(int UnivID, string fullname, string BD, string gend, string lvl
 //Print Student Information
 void Student::print()
 {
+	this->Person::print();
+	cout << " Degree Type:" << level;
+}
 
+string Student::getLvl()
+{
+	return level;
+}
+
+void Student::setLvl(string lvl)
+{
+	level = lvl;
 }
 
 //Destructor for student

@@ -18,6 +18,7 @@ class UGradStudent : public Student
 	public:
 		UGradStudent(int UnivID, string fullname, string BD, string gend, string lvl, string maj); //Prototype for constructor
 		void declareMjr(string maj); //Prototype for declare major function
+		string getMjr();
 		void print(); //Prototype for print function
 		~UGradStudent(); //Prototype for destructor
 

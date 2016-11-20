@@ -22,10 +22,17 @@ void ResearchAst::assignProj(string proj)
 	project = proj;
 }
 
+//Function to assign a project to research assistant
+string ResearchAst::getProj()
+{
+	return project;
+}
+
 //Print function for research assistant
 void ResearchAst::print()
 {
-	cout << "Hey RA" << endl;
+	this->GradStudent::print();
+	cout << " Research: " << this->getProj();;
 }
 
 //Destructor for research assistant

@@ -25,7 +25,8 @@ void UGradStudent::declareMjr(string maj)
 //Print function for undergraduate student
 void UGradStudent::print()
 {
-	cout << "Hey" << endl;
+	this->Student::print();
+	cout << " Major: " << this->getMjr();;
 }
 
 //Destructor for undergraduate student

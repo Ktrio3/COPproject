@@ -18,7 +18,7 @@ class TeachingAst;
 class Course
 {
 public:
-  Course(string subj, int num, int cred, char level, string newTitle);
+  Course(string subj, int num, int cred, string level, string newTitle);
   ~Course();
 
   void assignTA(TeachingAst *TA);
@@ -37,6 +37,8 @@ public:
   void assignGrade(int studentID, int grade);
 
   void print();
+  void printRoster();
+  void printGradebook();
 
   void setSubject(string subj);
   string getSubject();
@@ -47,8 +49,8 @@ public:
   void setCredits(int newCredits);
   int getCredits();
 
-  void setLvl(char newLvl);
-  char getLvl();
+  void setLvl(string newLvl);
+  string getLvl();
 
   void setTitle(string newTitle);
   string getTitle();
@@ -57,7 +59,7 @@ private:
   string subject;
   int number;
   int credits;
-  char lvl;
+  string lvl;
   string title;
   vector<Teacher *> instructors;
   vector<TeachingAst *> TAs;

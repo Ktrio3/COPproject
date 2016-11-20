@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Course::Course(string subj, int num, int cred, char level, string newTitle)
+Course::Course(string subj, int num, int cred, string level, string newTitle)
 : subject(subj), number(num), credits(cred), lvl(level), title(newTitle)
 {
 }
@@ -70,7 +70,18 @@ void Course::addGrade(int studentID)
 
 void Course::print()
 {
+  cout << this->getSubject() << " " << this->getNumber() << " " << this->getTitle()
+    << " Credits: " <<  this->getCredits() << endl;;
+}
 
+void Course::printRoster()
+{
+  //Name Unumber
+}
+
+void Course::printGradebook()
+{
+  //Name Unumber grade%
 }
 
 void Course::setSubject(string subj)
@@ -103,12 +114,12 @@ int Course::getCredits()
   return credits;
 }
 
-void Course::setLvl(char newLvl)
+void Course::setLvl(string newLvl)
 {
   lvl = newLvl;
 }
 
-char Course::getLvl()
+string Course::getLvl()
 {
   return lvl;
 }
