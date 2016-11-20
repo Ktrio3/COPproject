@@ -43,6 +43,7 @@ void Course::removeTeacher(int num)
 {
   //instructors.erase(num);
 }
+
 void Course::removeStudent(int num)
 {
   int studentID = roster[num]->getUID();
@@ -70,7 +71,18 @@ void Course::addGrade(int studentID)
 
 void Course::print()
 {
+  cout << this->getSubject() << " " << this->getNumber() << " " << this->getTitle()
+    << " Credits: " <<  this->getCredits();
+}
 
+void Course::printRoster()
+{
+  //Name Unumber
+}
+
+void Course::printGradebook()
+{
+  //Name Unumber grade%
 }
 
 void Course::setSubject(string subj)

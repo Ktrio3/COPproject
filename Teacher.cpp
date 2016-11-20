@@ -22,10 +22,16 @@ void Teacher::assignGrade(int crsID, int UnivID, int grade)
 
 }
 
+string Teacher::getRole()
+{
+	return role;
+}
+
 //Print function for teacher
 void Teacher::print()
 {
-
+	this->Person::print();
+	cout << " Position: " << this->getRole();
 }
 
 //Destructor for teacher

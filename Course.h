@@ -37,6 +37,8 @@ public:
   void assignGrade(int studentID, int grade);
 
   void print();
+  void printRoster();
+  void printGradebook();
 
   void setSubject(string subj);
   string getSubject();

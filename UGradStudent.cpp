@@ -22,10 +22,17 @@ void UGradStudent::declareMjr(string maj)
 	major = maj;
 }
 
+//Function for declaring or changing major
+string UGradStudent::getMjr()
+{
+	return major;
+}
+
 //Print function for undergraduate student
 void UGradStudent::print()
 {
-	cout << "Hey" << endl;
+	this->Student::print();
+	cout << " Major: " << this->getMjr();;
 }
 
 //Destructor for undergraduate student

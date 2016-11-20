@@ -57,15 +57,6 @@ int main(void)
     getline(file, date, '|');
     getline(file, gender, '|');
     getline(file, program, '|');
-    getline(file, junk); //Ignore \n
-
-    cout << name << endl;
-    cout << lvl << endl;
-    cout << role << endl;
-    cout << id << endl;
-    cout << date << endl;
-    cout << gender << endl;
-    cout << program << endl << endl;
 
     if(role == "U")
     {
@@ -85,9 +76,14 @@ int main(void)
       ResearchAst *student = new ResearchAst(stoi(id), name, date, gender, lvl, program, project);
       students.insert(make_pair(stoi(id), student));
     }
+
+    getline(file, junk); //Ignore \n at end of line
   }
 
+  file.close();
+
   //Print students
+  cout << "Scanned in the following students from Students.txt:\n";
   for(student_iter iterator = students.begin(); iterator != students.end(); iterator++) {
     //Test if undergraduate student
     UGradStudent *underStudent = dynamic_cast < UGradStudent * > (iterator->second);
@@ -107,9 +103,9 @@ int main(void)
     {
       RA->print();
     }
+    cout << "\n";
   }
-
-  file.close();
+  cout << "\n";
 
   //Open Teachers.txt file
   file.open("Teachers.txt");
@@ -136,27 +132,23 @@ int main(void)
     getline(file, gender, '|');
     getline(file, junk); //Ignore \n
 
-    cout << name << endl;
-    cout << role << endl;
-    cout << id << endl;
-    cout << date << endl;
-    cout << gender << endl << endl;
-  }
-  
     //Declare and instantiate teacher objects
-    Teacher *teacher = new Teacher(stoi(id), name, date, gender, rol);
+    Teacher *teacher = new Teacher(stoi(id), name, date, gender, role);
     teachers.insert(make_pair(stoi(id), teacher));
+  }
+  file.close();
 
   //Print teachers
+  cout << "Scanned in the following teachers from Teachers.txt:\n";
   for(teacher_iter iterator_t = teachers.begin(); iterator_t != teachers.end(); iterator_t++) {
   	Teacher *teach = iterator_t->second;
     if(teach != nullptr)
     {
       teach->print();
+      cout << endl;
     }
   }
-
-  file.close();
+  cout << endl;
 
   //Open Courses.txt file
   file.open("Courses.txt");
@@ -166,27 +158,28 @@ int main(void)
   {
     //Variables for Course constructor
     string subject = "";
-    int number;
-    int credits;
+    string number;
+    string credits;
     string lvl;
     string title;
     string teachers;
     string teachAsts;
-    string students; 
+    string students;
     string junk; //Used to discard extra \n char at end of line
 
-    getline(file, name, '|');
+    getline(file, subject, '|');
 
     if(subject == "") //End of file if no name found
       break;
 
     getline(file, number, '|');
     getline(file, credits, '|');
-    getline(file, lvl, '|');    
+    getline(file, lvl, '|');
     getline(file, title, '|');
     getline(file, teachers, '|');
     getline(file, teachAsts, '|');
     getline(file, students, '|');
+<<<<<<< HEAD
     getline(file, junk); //Ignore '\n'
     
     //Declare and instantiate course objects
@@ -222,10 +215,42 @@ int main(void)
   }
 
   //file.open("Courses.txt");
+=======
+    getline(file, junk); //Clear \n at end of line
+>>>>>>> f7bec581bd7631828b38a9aeaff8ce5296314d87
 
+    //Declare and instantiate teacher objects
+    Course *course = new Course(subject, stoi(number), stoi(credits), lvl, title);
+    courses.push_back(course);
 
-  //Once course read in, add students by UID in file
+  	//Seperate teachers string into separate teachers
+  	int start = 0;
+  	int end = teachers.find(',');
+  	string token = "";
 
+  	while (end != -1)
+  	{
+  		token = teachers.substr(start, end);
+  		start = end + 1;
+  		end = teachers.find(',', start);
+  		if (end == -1)
+  		{
+  			token = teachers.substr(start, teachers.length());
+  		}
+    }
+	 //Seperate teachAsts string into separate TAs
+
+	 //Seperate students string into separate students
+  }
+  file.close();
+
+  //Print courses
+  cout << "Scanned in the following courses from Courses.txt:\n";
+  for(Course *course : courses)
+  {
+      course->print();
+      cout << endl;
+  }
 
   //Read in departments
   //Once in, add members by UID and course by subj/num

@@ -25,10 +25,28 @@ int Person::getUID() const
 	return UID;
 }
 
-//Print function for Person
-void print()
+//Get function for name
+string Person::getName() const
 {
+	return name;
+}
 
+//Get function for University ID number
+string Person::getBirthdate() const
+{
+	return birthdate;
+}
+
+//Get function for University ID number
+string Person::getGender() const
+{
+	return gender;
+}
+
+//Print function for Person
+void Person::print() const
+{
+	cout << this->getName() << " UID: U" << this->getUID() << " Birthday: " << this->getBirthdate() << " Gender: " << this->getGender();
 }
 
 Person::~Person(){};

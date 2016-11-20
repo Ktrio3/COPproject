@@ -20,6 +20,7 @@ class GradStudent : public Student
 	public:
 		GradStudent(int UnivID, string fullname, string BD, string gend, string lvl, string prog); //Prototype for constructor
 		void choosePrgm(string prog); //Prototype for choose graduate program function
+		string getPrgm();
 		virtual void print(); //Prototype for print function
 		virtual ~GradStudent(); //Prototype for destructor
 
