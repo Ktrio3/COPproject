@@ -11,8 +11,7 @@
 using namespace std;
 
 //Constructor for undergraduate student
-UGradStudent::UGradStudent(int UnivID, string fullname, string BD, string gend, string lvl, string maj)
-:Student(UnivID, fullname, BD, gend, lvl)
+UGradStudent::UGradStudent(int UnivID, string fullname, string BD, string gend, string lvl, string maj) : Student(UnivID, fullname, BD, gend, lvl)
 {
 	major = maj;
 }

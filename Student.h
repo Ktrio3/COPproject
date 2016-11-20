@@ -22,8 +22,8 @@ class Student : public Person
 		Student(int UnivID, string fullname, string BD, string gend, string lvl); //Prototype for constructor
 		void registerCrs(Course *course); //Prototype for register course function
 		Course &getSchedule(int num); //Prototype for getSchedule function
-		virtual void print(); //Prototype for print function
-		virtual ~Student(); //Prototype for destructor
+		void print(); //Prototype for print function
+		~Student(); //Prototype for destructor
 
 	protected:
 		string level; //String for student level (e.g. PhD, Post-BS/A)

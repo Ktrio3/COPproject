@@ -11,7 +11,7 @@
 using namespace std;
 
 //Constructor for graduate student
-GradStudent::GradStudent(int UnivID, string fullname, string BD, char gend, string lvl, string prog) : Student(UnivID, fullname, BD, gend, lvl)
+GradStudent::GradStudent(int UnivID, string fullname, string BD, string gend, string lvl, string prog) : Student(UnivID, fullname, BD, gend, lvl)
 {
 	program = prog;
 }
