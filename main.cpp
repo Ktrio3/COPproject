@@ -7,7 +7,6 @@
 #include <vector>
 #include <map>
 #include <iomanip>
-#include <string>
 
 #include "Person.h"
 #include "Student.h"
@@ -23,13 +22,14 @@ using namespace std;
 
 int main(void)
 {
-  map<int, Student> students; //May want to make map with UID as key.
-  map<int, Teacher> teachers; //Map will make it very easier to add to course after reading.
-  vector<Course> courses;
-  vector<Department> departments;
+  map<int, Student *> students; //May want to make map with UID as key.
+  map<int, Teacher *> teachers; //Map will make it very easier to add to course after reading.
+  vector<Course *> courses;
+  vector<Department *> departments;
 
-
+  //Open Students.txt file
   ifstream file("Students.txt", ios::in);
+  
   //Read in student
   while(true)
   {
@@ -64,36 +64,81 @@ int main(void)
     cout << date << endl;
     cout << gender << endl;
     cout << program << endl << endl;
-
-    std::string::size_type sz;
-    if(role == "U")
-      students.insert(make_pair(stoi(id), UGradStudent(stoi(id), name, date, gender, lvl, program)));
   }
 
-  //Test if SavingsAccount
-  //UGradStudent *student =
-  //  dynamic_cast < UGradStudent * > (&(students[0]));
+  file.close();
+  
+  //Open Teachers.txt file
+  file.open("Teachers.txt");
+  
+  //Read in teachers
+  while(true)
+  {
+    //Variables for Teacher constructor
+    string name = "";
+    string role;
+    string id;
+    string date;
+    string gender;
+    string junk; //Used to discard extra \n char at end of line
 
-  UGradStudent student = UGradStudent(0, "Kevin", "00/11/11", "M", "PHD", "Physophy");
-  student.print();
+    getline(file, name, '|');
+
+    if(name == "") //End of file if no name found
+      break;
+
+    getline(file, role, '|');
+    getline(file, id, '|');
+    getline(file, date, '|');
+    getline(file, gender, '|');
+    getline(file, junk); //Ignore \n
+
+    cout << name << endl;
+    cout << role << endl;
+    cout << id << endl;
+    cout << date << endl;
+    cout << gender << endl << endl;
+  }
 
   file.close();
-  //Open teachers file
-  //Read in teachers
 
-  //TAs
+  //Open Courses.txt file
+  file.open("Courses.txt");
 
   //Read in courses
+  while(true)
+  {
+    //Variables for Course constructor
+    string subj = "";
+    string role;
+    string id;
+    string date;
+    string gender;
+    string junk; //Used to discard extra \n char at end of line
+
+    getline(file, name, '|');
+
+    if(name == "") //End of file if no name found
+      break;
+
+    getline(file, role, '|');
+    getline(file, id, '|');
+    getline(file, date, '|');
+    getline(file, gender, '|');
+    getline(file, junk); //Ignore \n
+
+    cout << name << endl;
+    cout << role << endl;
+    cout << id << endl;
+    cout << date << endl;
+    cout << gender << endl << endl;
+  }  
+  
   //file.open("Courses.txt");
 
-  /*while(!file.eof())
-  {
-    string swag;
-    file >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag >> swag;
-  }*/
 
   //Once course read in, add students by UID in file
-  file.close();
+
 
   //Read in departments
   //Once in, add members by UID and course by subj/num
