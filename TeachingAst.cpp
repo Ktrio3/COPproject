@@ -13,7 +13,7 @@
 using namespace std;
 
 //Constructor for TA
-TeachingAst::TeachingAst(int UnivID, string fullname, string BD, char gend, string lvl, string prog)
+TeachingAst::TeachingAst(int UnivID, string fullname, string BD, string gend, string lvl, string prog)
 : GradStudent(UnivID, fullname, BD, gend, lvl, prog){}
 
 Course &TeachingAst::getTACourses(int num)

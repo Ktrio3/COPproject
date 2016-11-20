@@ -16,10 +16,10 @@ using namespace std;
 class UGradStudent : public Student
 {
 	public:
-		UGradStudent(int UnivID, string fullname, string BD, char gend, string lvl, string maj); //Prototype for constructor
+		UGradStudent(int UnivID, string fullname, string BD, string gend, string lvl, string maj); //Prototype for constructor
 		void declareMjr(string maj); //Prototype for declare major function
-		void print(); //Prototype for print function
-		~UGradStudent(); //Prototype for destructor
+		virtual void print(); //Prototype for print function
+		virtual ~UGradStudent(); //Prototype for destructor
 
 	private:
 		string major; //string for major

@@ -15,7 +15,7 @@ using namespace std;
 class Person
 {
 	public:
-		Person(int UnivID, string fullname, string BD, char gend); //Prototype for constructor
+		Person(int UnivID, string fullname, string BD, string gend); //Prototype for constructor
 		int getUID() const;
 		void print(); //Prototype for print function
 		~Person(); //Prototype for destructor
@@ -24,6 +24,6 @@ class Person
 		int UID; //Integer for University ID number
 		string name; //string for full name
 		string birthdate; //Integer for birthdate (format: MM/DD/YYYY)
-		char gender; //Character for gender (either F or M)
+		string gender; //Character for gender (either F or M)
 };
 #endif

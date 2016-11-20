@@ -8,6 +8,10 @@ Department::Department(string newName) : name(newName)
 {
 }
 
+Department::~Department()
+{
+}
+
 void Department::addMember(Person *person)
 {
   members.push_back(person);

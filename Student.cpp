@@ -13,7 +13,7 @@
 using namespace std;
 
 //Constructor for student
-Student::Student(int UnivID, string fullname, string BD, char gend, string lvl) : Person(UnivID, fullname, BD, gend)
+Student::Student(int UnivID, string fullname, string BD, string gend, string lvl): Person(UnivID, fullname, BD, gend)
 {
 	level = lvl;
 }

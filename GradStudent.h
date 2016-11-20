@@ -18,10 +18,10 @@ using namespace std;
 class GradStudent : public Student
 {
 	public:
-		GradStudent(int UnivID, string fullname, string BD, char gend, string lvl, string prog); //Prototype for constructor
+		GradStudent(int UnivID, string fullname, string BD, string gend, string lvl, string prog); //Prototype for constructor
 		void choosePrgm(string prog); //Prototype for choose graduate program function
-		void print(); //Prototype for print function
-		~GradStudent(); //Prototype for destructor
+		virtual void print(); //Prototype for print function
+		virtual ~GradStudent(); //Prototype for destructor
 
 	protected:
 		string program; //String for program

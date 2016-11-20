@@ -1,10 +1,10 @@
 all: test
 
 test: Course.o Person.o Student.o TeachingAst.o ResearchAst.o GradStudent.o UGradStudent.o Department.o Teacher.o main.o
-		g++ -o test Course.o Person.o Student.o TeachingAst.o ResearchAst.o GradStudent.o UGradStudent.o Department.o Teacher.o main.o
+		g++ -std=c++11 -o test Course.o Person.o Student.o TeachingAst.o ResearchAst.o GradStudent.o UGradStudent.o Department.o Teacher.o main.o
 
 main.o: Course.h Person.h Student.h TeachingAst.h ResearchAst.h GradStudent.h UGradStudent.h Department.h Teacher.h main.cpp
-		g++ -c main.cpp
+		g++ -std=c++11 -c main.cpp
 
 Course.o: Student.h Teacher.h TeachingAst.h Course.h Course.cpp
 		g++ -c Course.cpp

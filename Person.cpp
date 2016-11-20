@@ -11,12 +11,16 @@
 using namespace std;
 
 //Constructor for person
-Person::Person(int UnivID, string fullname, string BD, char gend)
+Person::Person(int UnivID, string fullname, string BD, string gend)
 {
 	UID = UnivID;
 	name = fullname;
 	birthdate = BD;
 	gender = gend;
+}
+
+Person::~Person()
+{
 }
 
 //Get function for University ID number
@@ -30,5 +34,3 @@ void print()
 {
 
 }
-
-Person::~Person(){};

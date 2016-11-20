@@ -19,11 +19,11 @@ class Course;
 class Student : public Person
 {
 	public:
-		Student(int UnivID, string fullname, string BD, char gend, string lvl); //Prototype for constructor
+		Student(int UnivID, string fullname, string BD, string gend, string lvl); //Prototype for constructor
 		void registerCrs(Course *course); //Prototype for register course function
 		Course &getSchedule(int num); //Prototype for getSchedule function
-		void print(); //Prototype for print function
-		~Student(); //Prototype for destructor
+		virtual void print(); //Prototype for print function
+		virtual ~Student(); //Prototype for destructor
 
 	protected:
 		string level; //String for student level (e.g. PhD, Post-BS/A)

@@ -7,6 +7,7 @@
 #include <vector>
 #include <map>
 #include <iomanip>
+#include <string>
 
 #include "Person.h"
 #include "Student.h"
@@ -22,10 +23,10 @@ using namespace std;
 
 int main(void)
 {
-  map<int, Student *> students; //May want to make map with UID as key.
-  map<int, Teacher *> teachers; //Map will make it very easier to add to course after reading.
-  vector<Course *> courses;
-  vector<Department *> departments;
+  map<int, Student> students; //May want to make map with UID as key.
+  map<int, Teacher> teachers; //Map will make it very easier to add to course after reading.
+  vector<Course> courses;
+  vector<Department> departments;
 
 
   ifstream file("Students.txt", ios::in);
@@ -63,9 +64,20 @@ int main(void)
     cout << date << endl;
     cout << gender << endl;
     cout << program << endl << endl;
+
+    std::string::size_type sz;
+    if(role == "U")
+      students.insert(make_pair(stoi(id), UGradStudent(stoi(id), name, date, gender, lvl, program)));
   }
 
-  //file.close();
+  //Test if SavingsAccount
+  //UGradStudent *student =
+  //  dynamic_cast < UGradStudent * > (&(students[0]));
+
+  Student student = UGradStudent(0, "Kevin", "00/11/11", "M", "PHD", "Physophy");
+  student.print();
+
+  file.close();
   //Open teachers file
   //Read in teachers
 

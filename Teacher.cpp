@@ -11,7 +11,7 @@
 #include "Teacher.h"
 
 //Constructor for teacher
-Teacher::Teacher(int UnivID, string fullname, string BD, char gend, string rol) : Person(UnivID, fullname, BD, gend)
+Teacher::Teacher(int UnivID, string fullname, string BD, string gend, string rol) : Person(UnivID, fullname, BD, gend)
 {
 	role = rol;
 }
