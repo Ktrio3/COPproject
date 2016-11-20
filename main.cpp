@@ -162,9 +162,9 @@ int main(void)
     string credits;
     string lvl;
     string title;
-    string teachers;
+    string instructors;
     string teachAsts;
-    string students;
+    string pupils;
     string junk; //Used to discard extra \n char at end of line
 
     getline(file, subject, '|');
@@ -176,34 +176,65 @@ int main(void)
     getline(file, credits, '|');
     getline(file, lvl, '|');
     getline(file, title, '|');
-    getline(file, teachers, '|');
+    getline(file, instructors, '|');
     getline(file, teachAsts, '|');
-    getline(file, students, '|');
+    getline(file, pupils, '|');
     getline(file, junk); //Clear \n at end of line
 
-    //Declare and instantiate teacher objects
+    //Declare and instantiate course objects
     Course *course = new Course(subject, stoi(number), stoi(credits), lvl, title);
     courses.push_back(course);
 
   	//Seperate teachers string into separate teachers
   	int start = 0;
-  	int end = teachers.find(',');
+  	int end = instructors.find(',');
   	string token = "";
 
   	while (end != -1)
   	{
-  		token = teachers.substr(start, end);
+  		token = instructors.substr(start, end);
   		start = end + 1;
-  		end = teachers.find(',', start);
+  		end = instructors.find(',', start);
   		if (end == -1)
   		{
-  			token = teachers.substr(start, teachers.length());
+  			token = instructors.substr(start, instructors.length());
   		}
+  		course->assignTeacher(teachers[token].second);	//Assign each teacher to course based on UID
     }
-	 //Seperate teachAsts string into separate TAs
+    
+	//Seperate teachAsts string into separate TAs
+  	start = 0;
+  	end = teachAsts.find(',');
 
-	 //Seperate students string into separate students
+  	while (end != -1)
+  	{
+  		token = teachAsts.substr(start, end);
+  		start = end + 1;
+  		end = teachAsts.find(',', start);
+  		if (end == -1)
+  		{
+  			token = teachAsts.substr(start, teachAsts.length());
+  		}
+  		course->assignTA(students[token].second);	//Assign each TA to course based on UID
+    }
+
+	//Seperate pupils string into separate students
+	start = 0;
+  	end = pupils.find(',');
+
+  	while (end != -1)
+  	{
+  		token = pupils.substr(start, end);
+  		start = end + 1;
+  		end = pupils.find(',', start);
+  		if (end == -1)
+  		{
+  			token = pupils.substr(start, pupils.length());
+  		}
+  		course->addStudent(students[token].second);	//Add each student to course roster based on UID
+    }
   }
+  
   file.close();
 
   //Print courses
