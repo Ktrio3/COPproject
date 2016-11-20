@@ -11,7 +11,7 @@
 using namespace std;
 
 //Constructor for research assistant
-ResearchAst::ResearchAst(int UnivID, string fullname, string BD, char gend, string lvl, string prog, string proj) : GradStudent(UnivID, fullname, BD, gend, lvl, prog)
+ResearchAst::ResearchAst(int UnivID, string fullname, string BD, string gend, string lvl, string prog, string proj) : GradStudent(UnivID, fullname, BD, gend, lvl, prog)
 {
 	project = proj;
 }

@@ -74,7 +74,7 @@ int main(void)
   //UGradStudent *student =
   //  dynamic_cast < UGradStudent * > (&(students[0]));
 
-  Student student = UGradStudent(0, "Kevin", "00/11/11", "M", "PHD", "Physophy");
+  UGradStudent student = UGradStudent(0, "Kevin", "00/11/11", "M", "PHD", "Physophy");
   student.print();
 
   file.close();
