@@ -16,22 +16,35 @@ Teacher::Teacher(int UnivID, string fullname, string BD, string gend, string rol
 	role = rol;
 }
 
-//Function for assigning grades to students
-void Teacher::assignGrade(int crsID, int UnivID, int grade)
-{
-
-}
-
+/*************************************
+/getRole()
+/
+/Returns the teachers role (adjunct, professor, etc)
+**************************************/
 string Teacher::getRole()
 {
 	return role;
 }
 
-//Print function for teacher
+/*************************************
+/print()
+/
+/Prints information about the teacher
+**************************************/
 void Teacher::print()
 {
 	this->Person::print();
 	cout << " Position: " << this->getRole();
+}
+
+/*************************************
+/printCourses()
+/
+/Prints the courses the teacher is assigned to
+**************************************/
+void Teacher::printCourses()
+{
+	
 }
 
 //Destructor for teacher

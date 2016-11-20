@@ -18,18 +18,32 @@ Student::Student(int UnivID, string fullname, string BD, string gend, string lvl
 	level = lvl;
 }
 
-//Print Student Information
+/*************************************
+/print()
+/
+/Prints information about the student
+**************************************/
 void Student::print()
 {
 	this->Person::print();
 	cout << " Degree Type: " << level;
 }
 
+/*************************************
+/getLvl()
+/
+/Returns the degree type of the student
+**************************************/
 string Student::getLvl()
 {
 	return level;
 }
 
+/*************************************
+/setLvl()
+/
+/Sets the level (degree type) of the student
+**************************************/
 void Student::setLvl(string lvl)
 {
 	level = lvl;

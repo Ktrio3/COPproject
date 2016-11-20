@@ -1,6 +1,9 @@
-/***********************************************
-
-***********************************************/
+//********************************************
+// File name: main.cpp
+// Purpose: Reads in Students, Courses, Teachers, and Departments from txt
+//    files and runs them through testing
+// Authors: Kevin Dennis and V. Liana Peralta
+//********************************************
 
 #include <iostream>
 #include <fstream>
@@ -201,7 +204,7 @@ int main(void)
   		}
   		course->assignTeacher(teachers[token].second);	//Assign each teacher to course based on UID
     }
-    
+
 	//Seperate teachAsts string into separate TAs
   	start = 0;
   	end = teachAsts.find(',');
@@ -234,7 +237,7 @@ int main(void)
   		course->addStudent(students[token].second);	//Add each student to course roster based on UID
     }
   }
-  
+
   file.close();
 
   //Print courses
