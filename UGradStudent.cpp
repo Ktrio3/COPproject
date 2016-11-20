@@ -25,7 +25,7 @@ void UGradStudent::declareMjr(string maj)
 //Print function for undergraduate student
 void UGradStudent::print()
 {
-
+	cout << "Hey" << endl;
 }
 
 //Destructor for undergraduate student

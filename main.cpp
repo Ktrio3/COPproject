@@ -23,10 +23,11 @@ using namespace std;
 
 int main(void)
 {
-  map<int, Student> students; //May want to make map with UID as key.
-  map<int, Teacher> teachers; //Map will make it very easier to add to course after reading.
-  vector<Course> courses;
-  vector<Department> departments;
+  map<int, Student *> students; //May want to make map with UID as key.
+  typedef std::map<int, Student *>::iterator student_iter; //For iterating over students map
+  map<int, Teacher *> teachers; //Map will make it very easier to add to course after reading.
+  vector<Course *> courses;
+  vector<Department *> departments;
 
 
   ifstream file("Students.txt", ios::in);
@@ -66,16 +67,52 @@ int main(void)
     cout << program << endl << endl;
 
     std::string::size_type sz;
+
+
     if(role == "U")
-      students.insert(make_pair(stoi(id), UGradStudent(stoi(id), name, date, gender, lvl, program)));
+    {
+      UGradStudent *student = new UGradStudent(stoi(id), name, date, gender, lvl, program);
+      students.insert(make_pair(stoi(id), student));
+    }
+    else if(role == "TA")
+    {
+      TeachingAst *student = new TeachingAst(stoi(id), name, date, gender, lvl, program);
+      students.insert(make_pair(stoi(id), student));
+    }
+    else if(role == "RA")
+    {
+      //Read in the extra project specific to RA
+      string project;
+      getline(file, project, '|');
+      ResearchAst *student = new ResearchAst(stoi(id), name, date, gender, lvl, program, project);
+      students.insert(make_pair(stoi(id), student));
+    }
   }
 
-  //Test if SavingsAccount
-  //UGradStudent *student =
-  //  dynamic_cast < UGradStudent * > (&(students[0]));
+  //Print students
+  for(student_iter iterator = students.begin(); iterator != students.end(); iterator++) {
+    //Test if undergraduate student
+    UGradStudent *underStudent = dynamic_cast < UGradStudent * > (iterator->second);
+    if(underStudent != nullptr)
+    {
+      underStudent->print();
+    }
 
-  UGradStudent student = UGradStudent(0, "Kevin", "00/11/11", "M", "PHD", "Physophy");
-  student.print();
+    TeachingAst *TA = dynamic_cast < TeachingAst * > (iterator->second);
+    if(TA != nullptr)
+    {
+      TA->print();
+    }
+
+    ResearchAst *RA = dynamic_cast < ResearchAst * > (iterator->second);
+    if(RA != nullptr)
+    {
+      RA->print();
+    }
+  }
+
+
+
 
   file.close();
   //Open teachers file

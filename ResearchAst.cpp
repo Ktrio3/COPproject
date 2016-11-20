@@ -25,7 +25,7 @@ void ResearchAst::assignProj(string proj)
 //Print function for research assistant
 void ResearchAst::print()
 {
-
+	cout << "Hey RA" << endl;
 }
 
 //Destructor for research assistant

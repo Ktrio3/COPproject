@@ -24,7 +24,7 @@ Course &TeachingAst::getTACourses(int num)
 //Print function for TA
 void TeachingAst::print()
 {
-
+	cout << "Hey TA" << endl;
 }
 
 //Destructor for TA
