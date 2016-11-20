@@ -19,10 +19,6 @@ Person::Person(int UnivID, string fullname, string BD, string gend)
 	gender = gend;
 }
 
-Person::~Person()
-{
-}
-
 //Get function for University ID number
 int Person::getUID() const
 {
@@ -34,3 +30,5 @@ void print()
 {
 
 }
+
+Person::~Person(){};
