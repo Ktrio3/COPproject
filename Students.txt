@@ -1,5 +1,5 @@
-Kevin Dennis | U | 987654321 | 11/03/1995 | M | Computer Science
-Ahmad Babeian Jelodar | G | TA | 192837465 | 01/23/1990 | M | Artificial Intelligence
-Vasthy Peralta | U | 564738291 | 07/07/1991 | F | Computer Science
-John Johnson | U | 783645123 | 09/07/1982 | M | Computer Science
-Kim Price | G | 909086767 | 04/19/1989 | F | Software Testing
+Kevin Dennis|BS|U|987654321|11/03/1995|M|Computer Science|
+Ahmad Babeian Jelodar|PHD|TA|192837465|01/23/1990|M|Artificial Intelligence|
+Vasthy Peralta|BS|U|564738291|07/07/1991|F|Computer Science|
+John Johnson|BS|U|783645123|09/07/1982|M|Computer Science|
+Kim Price|MS|RA|909086767|04/19/1989|F|Software Testing|
