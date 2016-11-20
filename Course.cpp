@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Course::Course(string subj, int num, int cred, char level, string newTitle)
+Course::Course(string subj, int num, int cred, string level, string newTitle)
 : subject(subj), number(num), credits(cred), lvl(level), title(newTitle)
 {
 }

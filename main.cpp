@@ -187,9 +187,11 @@ int main(void)
     getline(file, teachers, '|');
     getline(file, teachAsts, '|');
     getline(file, students, '|');
-    getline(file, junk); //Ignore \n
+    getline(file, junk); //Ignore '\n'
     
-    //Create Course objects
+    //Declare and instantiate course objects
+    Course *crs = new Course(subject, stoi(number), stoi(credits), lvl, title);
+    teachers.insert(make_pair(stoi(id), teacher));
 
 	//Seperate teachers string into separate teachers
 	int start = 0;
