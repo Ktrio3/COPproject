@@ -11,7 +11,7 @@
 using namespace std;
 
 //Constructor for person
-Person::Person(int UnivID, string fullname, int BD, char gend)
+Person::Person(int UnivID, string fullname, string BD, char gend)
 {
 	UID = UnivID;
 	name = fullname;

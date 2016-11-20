@@ -16,7 +16,7 @@ using namespace std;
 class ResearchAst : public GradStudent
 {
 	public:
-		ResearchAst(int UnivID, string fullname,int BD, char gend, string lvl, string prog, string proj); //Prototype for constructor
+		ResearchAst(int UnivID, string fullname, string BD, char gend, string lvl, string prog, string proj); //Prototype for constructor
 		void assignProj(string proj); //Prototype for assign project function
 		void print(); //Prototype for print function
 		~ResearchAst(); //Prototype for destructor
