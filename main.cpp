@@ -151,7 +151,7 @@ int main(void)
   while(true)
   {
     //Variables for Course constructor
-    string subj = "";
+    string subject = "";
     string name;
     string role;
     string id;
