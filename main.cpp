@@ -179,45 +179,7 @@ int main(void)
     getline(file, teachers, '|');
     getline(file, teachAsts, '|');
     getline(file, students, '|');
-<<<<<<< HEAD
-    getline(file, junk); //Ignore '\n'
-    
-    //Declare and instantiate course objects
-    Course *crs = new Course(subject, stoi(number), stoi(credits), lvl, title);
-    teachers.insert(make_pair(stoi(id), teacher));
-
-	//Seperate teachers string into separate teachers
-	int start = 0;
-	int end = teachers.find(',');
-	string token = "";
-	
-	while (end != -1)
-	{
-		token = teachers.substr(start, end);
-		start = end + 1;
-		end = teachers.find(',', start);
-		if (end == -1)
-		{
-			token = teachers.substr(start, teachers.length());
-		}
-		
-	}
-
-	//Seperate teachAsts string into separate TAs
-	
-	//Seperate students string into separate students
-
-    cout << name << endl;
-    cout << role << endl;
-    cout << id << endl;
-    cout << date << endl;
-    cout << gender << endl << endl;
-  }
-
-  //file.open("Courses.txt");
-=======
     getline(file, junk); //Clear \n at end of line
->>>>>>> f7bec581bd7631828b38a9aeaff8ce5296314d87
 
     //Declare and instantiate teacher objects
     Course *course = new Course(subject, stoi(number), stoi(credits), lvl, title);
