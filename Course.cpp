@@ -62,7 +62,14 @@ void Course::addStudent(Student *student)
 **************************************/
 Teacher &Course::getTeacher(int num)
 {
-  return *instructors[num];
+	if ((num >= 0) && (num <= numTeachers()))
+	{
+		return *instructors[num];
+	}
+  	else
+  	{
+  		cerr << "Index for getting teacher is out of range." << endl;
+	}
 }
 
 /*************************************
@@ -72,7 +79,14 @@ Teacher &Course::getTeacher(int num)
 **************************************/
 Student &Course::getStudent(int num)
 {
-  return *roster[num];
+	if ((num >= 0) && (num <= numStudents()))
+	{
+		return *roster[num];
+	}
+  	else
+  	{
+  		cerr << "Index for getting student is out of range." << endl;
+	}
 }
 
 /*************************************
@@ -82,7 +96,14 @@ Student &Course::getStudent(int num)
 **************************************/
 TeachingAst &Course::getTA(int num)
 {
-  return *TAs[num];
+	if ((num >= 0) && (num <= numTAs()))
+	{
+		return *TAs[num];
+	}
+  	else
+  	{
+  		cerr << "Index for getting TA is out of range." << endl;
+	}
 }
 
 /*************************************
@@ -102,9 +123,16 @@ void Course::removeTeacher(int num)
 **************************************/
 void Course::removeStudent(int num)
 {
-  int studentID = roster[num]->getUID();
-  gradeBook.erase(studentID);
-  roster.erase(roster.begin() + num);
+	if ((num >= 0) && (num <= numStudents()))
+	{
+	    int studentID = roster[num]->getUID();
+ 		gradeBook.erase(studentID);
+   		roster.erase(roster.begin() + num);
+	}
+  	else
+  	{
+  		cerr << "Index for getting student is out of range." << endl;
+	}
 }
 
 /*************************************
@@ -114,7 +142,14 @@ void Course::removeStudent(int num)
 **************************************/
 void Course::removeTA(int num)
 {
-  TAs.erase(TAs.begin() + num);
+	if ((num >= 0) && (num <= numTAs()))
+	{
+		TAs.erase(TAs.begin() + num);
+	}
+  	else
+  	{
+  		cerr << "Index for getting TA is out of range." << endl;
+	}
 }
 
 /*************************************
