@@ -139,7 +139,7 @@ string Department::getName()
 **************************************/
 void Department::print()
 {
-
+  cout << this->getName();
 }
 
 /*************************************

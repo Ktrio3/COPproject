@@ -382,6 +382,13 @@ int main(void)
 
   file.close();
   //Print departments
+  cout << "Scanned in the following departments from Departments.txt:\n";
+  for(Department *department : departments)
+  {
+    department->print();
+    cout << endl;
+  }
+  cout << endl;
 
   Course *testCourse = nullptr;
   //Find a course with students in it for testing purposes
