@@ -40,6 +40,10 @@ public:
   void removeStudent(int num);  //Removes the Student at position num
   void removeTA(int num); //Removes the TA at position num
 
+  int numStudents();  //Returns the number of students
+  int numTeachers(); //Returns the number of teachers
+  int numTAs(); //Returns the number of TAs
+
   int getGrade(int studentID);  //Returns the grade for the given Student
   void assignGrade(int studentID, int grade); //Changes the grade for this Student
 

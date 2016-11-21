@@ -26,6 +26,11 @@ Course &TeachingAst::getTACourse(int num)
 	return *TACourses[num];
 }
 
+void TeachingAst::assignCourse(Course * course)
+{
+	TACourses.push_back(course);
+}
+
 /*************************************
 /print()
 /

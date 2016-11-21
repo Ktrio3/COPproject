@@ -118,6 +118,36 @@ void Course::removeTA(int num)
 }
 
 /*************************************
+/numStudents()
+/
+/Retruns the number of students in the course
+**************************************/
+int Course::numStudents()
+{
+  return roster.size();
+}
+
+/*************************************
+/numTeachers()
+/
+/Retruns the number of teachers in the course
+**************************************/
+int Course::numTeachers()
+{
+  return instructors.size();
+}
+
+/*************************************
+/numTAs()
+/
+/Retruns the number of TAs in the course
+**************************************/
+int Course::numTAs()
+{
+  return TAs.size();
+}
+
+/*************************************
 /getGrade()
 /
 /Returns the grade (as a percentage, i.e 98 for 98%)
