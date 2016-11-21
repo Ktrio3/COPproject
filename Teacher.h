@@ -21,10 +21,15 @@ class Teacher : public Person
 {
 	public:
 		Teacher(int UnivID, string fullname, string BD, string gend, string rol); //Prototype for constructor
-		void assignGrade(int crsID, int UnivID, int grade); //Prototype for assign grade function
+
 		string getRole();
-		int numCourses();
-		void print(); //Prototype for print function
+
+		void assignCourse(Course *);
+		int numCourses(); //Returns the number of courses the teacher is assigned to
+
+		void print(); //Prints information about the teacher
+		void printCourses(); //Prints the courses that they are teaching
+
 		~Teacher(); //Prototype for destructor
 
 	protected:

@@ -11,23 +11,37 @@
 using namespace std;
 
 //Constructor for graduate student
-GradStudent::GradStudent(int UnivID, string fullname, string BD, string gend, string lvl, string prog) : Student(UnivID, fullname, BD, gend, lvl)
+GradStudent::GradStudent(int UnivID, string fullname, string BD, string gend, string lvl, string prog)
+: Student(UnivID, fullname, BD, gend, lvl)
 {
 	program = prog;
 }
 
-//Function for assigning a program to a graduate student
+/*************************************
+/choosePrgm()
+/
+/Assigns a program to a graduate student
+**************************************/
 void GradStudent::choosePrgm(string prog)
 {
 	program = prog;
 }
 
+/*************************************
+/getPrgm()
+/
+/Returns the program the Grad Student is in
+**************************************/
 string GradStudent::getPrgm()
 {
 	return program;
 }
 
-//Print function for graduate student
+/*************************************
+/print()
+/
+/Print function for graduate student
+**************************************/
 void GradStudent::print()
 {
 	this->Student::print();

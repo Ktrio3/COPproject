@@ -16,19 +16,32 @@ ResearchAst::ResearchAst(int UnivID, string fullname, string BD, string gend, st
 	project = proj;
 }
 
-//Function to assign a project to research assistant
+/*************************************
+/assignProj()
+/
+/Assigns the ResearchAst to a project
+**************************************/
 void ResearchAst::assignProj(string proj)
 {
 	project = proj;
 }
 
-//Function to assign a project to research assistant
+/*************************************
+/getProj()
+/
+/Returns the project the research assistant is
+/		working on
+**************************************/
 string ResearchAst::getProj()
 {
 	return project;
 }
 
-//Print function for research assistant
+/*************************************
+/print()
+/
+/Prints information about the ResearchAst
+**************************************/
 void ResearchAst::print()
 {
 	this->GradStudent::print();

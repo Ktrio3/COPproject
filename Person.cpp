@@ -19,31 +19,52 @@ Person::Person(int UnivID, string fullname, string BD, string gend)
 	gender = gend;
 }
 
-//Get function for University ID number
+/*************************************
+/getUID()
+/
+/Returns the person's University ID number
+**************************************/
 int Person::getUID() const
 {
 	return UID;
 }
 
-//Get function for name
+/*************************************
+/getName()
+/
+/Returns the person's name
+**************************************/
 string Person::getName() const
 {
 	return name;
 }
 
-//Get function for University ID number
+/*************************************
+/getName()
+/
+/Returns the person's name
+**************************************/
 string Person::getBirthdate() const
 {
 	return birthdate;
 }
 
-//Get function for University ID number
+/*************************************
+/getGender()
+/
+/Returns the person's gender
+**************************************/
 string Person::getGender() const
 {
 	return gender;
 }
 
-//Print function for Person
+/*************************************
+/print()
+/
+/Prints information about the person, for example
+/		Kevin Dennis UID: U111111111 Birthday: 11/03/1995 Gender: M
+**************************************/
 void Person::print() const
 {
 	cout << this->getName() << " UID: U" << this->getUID() << " Birthday: " << this->getBirthdate() << " Gender: " << this->getGender();

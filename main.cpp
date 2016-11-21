@@ -1,6 +1,9 @@
-/***********************************************
-
-***********************************************/
+//********************************************
+// File name: main.cpp
+// Purpose: Reads in Students, Courses, Teachers, and Departments from txt
+//    files and runs them through testing
+// Authors: Kevin Dennis and V. Liana Peralta
+//********************************************
 
 #include <iostream>
 #include <fstream>
@@ -193,6 +196,7 @@ int main(void)
   	while (end != -1)
   	{
   		token = instructors.substr(start, end);
+<<<<<<< HEAD
   		start = end + 1;
   		end = instructors.find(',', start);
   		if (end == -1)
@@ -200,9 +204,22 @@ int main(void)
   			token = instructors.substr(start, instructors.length());
   		}
   		course->assignTeacher(teachers[stoi(token)].second);	//Assign each teacher to course based on UID
+=======
+  		course->assignTeacher(teachers[stoi(token)]);	//Assign each teacher to course based on UID
+
+      start = end + 1;
+      end = instructors.find(',', start);
     }
-    
-	//Seperate teachAsts string into separate TAs
+
+    //Read in final (or only) value, if any present
+    if(end == -1 && pupils.length() != 0)
+    {
+      token = instructors.substr(start, instructors.length());
+      course->assignTeacher(teachers[stoi(token)]);
+>>>>>>> fd58e4983a612ac6f764cf6bf881677138ee054a
+    }
+
+	  //Seperate teachAsts string into separate TAs
   	start = 0;
   	end = teachAsts.find(',');
 
@@ -211,30 +228,67 @@ int main(void)
   		token = teachAsts.substr(start, end);
   		start = end + 1;
   		end = teachAsts.find(',', start);
+<<<<<<< HEAD
   		if (end == -1)
   		{
   			token = teachAsts.substr(start, teachAsts.length());
   		}
   		course->assignTA(students[stoi(token)].second);	//Assign each TA to course based on UID
+=======
+
+      TeachingAst *TA = dynamic_cast < TeachingAst * > (students[stoi(token)]);
+      if(TA != nullptr)
+      {
+        course->assignTA(TA);	//Assign each TA to course based on UID
+      }
     }
 
-	//Seperate pupils string into separate students
-	start = 0;
+    //Read in final (or only) value, if any present
+    if(end == -1 && pupils.length() != 0)
+    {
+      token = teachAsts.substr(start, teachAsts.length());
+
+      TeachingAst *TA = dynamic_cast < TeachingAst * > (students[stoi(token)]);
+      if(TA != nullptr)
+      {
+        course->assignTA(TA);	//Assign each TA to course based on UID]
+      }
+>>>>>>> fd58e4983a612ac6f764cf6bf881677138ee054a
+    }
+
+  	//Seperate pupils string into separate students
+  	start = 0;
   	end = pupils.find(',');
 
   	while (end != -1)
   	{
   		token = pupils.substr(start, end);
   		start = end + 1;
+<<<<<<< HEAD
   		end = pupils.find(',', start);
   		if (end == -1)
   		{
   			token = pupils.substr(start, pupils.length());
   		}
   		course->addStudent(students[stoi(token)].second);	//Add each student to course roster based on UID
+=======
+
+  		course->addStudent(students[stoi(token)]);	//Add each student to course roster based on UID
+      students[stoi(token)]->registerCrs(course);  //Add course to students schedule
+
+      end = pupils.find(',', start);
+    }
+
+    //Read in final (or only) value, if any present
+    if (end == -1 && pupils.length() != 0)
+    {
+      token = pupils.substr(start, pupils.length());
+      course->addStudent(students[stoi(token)]);
+      students[stoi(token)]->registerCrs(course);  //Add course to students schedule
+>>>>>>> fd58e4983a612ac6f764cf6bf881677138ee054a
     }
   }
-  
+
   file.close();
 
   //Print courses
@@ -244,29 +298,62 @@ int main(void)
       course->print();
       cout << endl;
   }
+  cout << endl;
 
   //Read in departments
+
   //Once in, add members by UID and course by subj/num
-
-  //Print students
-
-  //Print teachers
-
-  //Print courses
 
   //Print departments
 
   //Print the students in a course
+  cout << "Printing students in " << courses[0]->getTitle() << ":" << endl;
+  courses[0]->printRoster();
+  cout << endl;
 
   //Print the grades for a student in the course
+  cout << "Printing grades for students in " << courses[0]->getTitle() << ":" << endl;
+  courses[0]->printGradebook();
+  cout << endl;
 
   //Change the grade for a student in the course
+  cout << "Changing grade for " << courses[0]->getStudent(0).getName() << " in "
+    << courses[0]->getTitle() << " to a 105%:" << endl;
+  courses[0]->assignGrade(courses[0]->getStudent(0).getUID(), 105);
+  courses[0]->printGradebook();
+  cout << endl;
 
-  //Print TA for the course
+  //Add Student to the course
+  cout << "Creating a new Undergrad Student named Study McFake and enrolling in "
+    << courses[0]->getTitle() << ":" << endl;
+  UGradStudent *newStudent = new UGradStudent(100056, "Study McFake", "01/11/1992", "M", "BS", "Computer Engineering");
+  students.insert(make_pair(newStudent->getUID(), newStudent)); //Add student to our map
+  courses[0]->addStudent(newStudent); //Add student to course
+  newStudent->registerCrs(courses[0]);  //Add course to students schedule
+  courses[0]->printRoster();
+  cout << endl;
 
-  //Add TA to the course
+  //Print instructors
+  cout << "Printing instructor(s) for " << courses[0]->getTitle() << ":" << endl;
+  courses[0]->printTeachers();
+  cout << endl;
 
   //Add instructor to the course
+  cout << "Creating a new professor named Teachy McFake and assigning to "
+    << courses[0]->getTitle() << ":" << endl;
+  Teacher *newTeacher = new Teacher(100021, "Teachy McFake", "01/11/1992", "M", "Professor");
+  teachers.insert(make_pair(newTeacher->getUID(), newTeacher)); //Add teacher to our map
+  courses[0]->assignTeacher(newTeacher); //Add teacher to course
+  newTeacher->assignCourse(courses[0]);  //Add course to teachers schedule
+  courses[0]->printTeachers();
+  cout << endl;
+
+  //Print TA for the course
+  cout << "Printing TA(s) for " << courses[0]->getTitle() << ":" << endl;
+  courses[0]->printTAs();
+  cout << endl;
+
+  //Add TA to the course
 
   //Print Department members
 

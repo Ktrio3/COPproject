@@ -16,19 +16,31 @@ UGradStudent::UGradStudent(int UnivID, string fullname, string BD, string gend, 
 	major = maj;
 }
 
-//Function for declaring or changing major
+/*************************************
+/declareMjr()
+/
+/Assigned the given major to the student
+**************************************/
 void UGradStudent::declareMjr(string maj)
 {
 	major = maj;
 }
 
-//Function for declaring or changing major
+/*************************************
+/getMjr()
+/
+/Returns the major the student is studying
+**************************************/
 string UGradStudent::getMjr()
 {
 	return major;
 }
 
-//Print function for undergraduate student
+/*************************************
+/print()
+/
+/Prints info about the undergraduate student
+**************************************/
 void UGradStudent::print()
 {
 	this->Student::print();

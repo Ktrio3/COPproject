@@ -20,15 +20,20 @@ class Student : public Person
 {
 	public:
 		Student(int UnivID, string fullname, string BD, string gend, string lvl); //Prototype for constructor
-		void registerCrs(Course *course); //Prototype for register course function
-		Course &getSchedule(int num); //Prototype for getSchedule function
-		virtual void print(); //Prototype for print function
+
+		void registerCrs(Course *course); //Registers a student for a course
+		Course &getSchedule(int num); //Returns the course at position num
+
+		virtual void print(); //Prints information about the student
+		void printCourses();	//Prints courses the student is enrolled in
+
 		string getLvl();
 		void setLvl(string lvl);
+
 		virtual ~Student(); //Prototype for destructor
 
 	protected:
 		string level; //String for student level (e.g. PhD, Post-BS/A)
-		vector< const Course *> Schedule; //List of courses the student is registered for
+		vector< const Course *> schedule; //Vector of courses the student is registered for
 };
 #endif

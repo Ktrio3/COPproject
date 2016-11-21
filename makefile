@@ -7,31 +7,31 @@ main.o: Course.h Person.h Student.h TeachingAst.h ResearchAst.h GradStudent.h UG
 		g++ -std=c++11 -c main.cpp
 
 Course.o: Student.h Teacher.h TeachingAst.h Course.h Course.cpp
-		g++ -c Course.cpp
+		g++ -std=c++11 -c Course.cpp
 
 TeachingAst.o: GradStudent.h TeachingAst.h TeachingAst.cpp
-		g++ -c TeachingAst.cpp
+		g++ -std=c++11 -c TeachingAst.cpp
 
 ResearchAst.o: GradStudent.h ResearchAst.h ResearchAst.cpp
-		g++ -c ResearchAst.cpp
+		g++ -std=c++11 -c ResearchAst.cpp
 
 GradStudent.o: Student.h GradStudent.h GradStudent.cpp
-		g++ -c GradStudent.cpp
+		g++ -std=c++11 -c GradStudent.cpp
 
 UGradStudent.o: Student.h UGradStudent.h UGradStudent.cpp
-		g++ -c UGradStudent.cpp
+		g++ -std=c++11 -c UGradStudent.cpp
 
 Teacher.o: Person.h Teacher.h Teacher.cpp
-		g++ -c Teacher.cpp
+		g++ -std=c++11 -c Teacher.cpp
 
 Student.o: Person.h Student.h Student.cpp
-		g++ -c Student.cpp
+		g++ -std=c++11 -c Student.cpp
 
 Department.o: Department.cpp Department.h Person.h
-		g++ -c Department.cpp
+		g++ -std=c++11 -c Department.cpp
 
 Person.o: Person.h Person.cpp
-		g++ -c Person.cpp
+		g++ -std=c++11 -c Person.cpp
 
 clean:
 		rm *.o

@@ -21,8 +21,12 @@ class TeachingAst : public GradStudent
 {
 	public:
 		TeachingAst(int UnivID, string fullname, string BD, string gend, string lvl, string prog); //Prototype for constructor
-		Course &getTACourses(int num); //Prototype for get TA courses function
-		virtual void print(); //Prototype for print function
+		
+		Course &getTACourse(int num); //Returns the course at postion num
+
+		virtual void print(); //Prints information about the TA
+		void printTACourses(); //Prints courses the TA is assigned to
+
 		virtual ~TeachingAst(); //Prototype for destructor
 
 	protected:
