@@ -30,9 +30,6 @@ using namespace std;
 //Check functions in classes -- ie some of the basic ones we don't use have no definition
 //Add some more silly functions
 //Clean up/style comments
-//Print the courses a student is having
-//Print courses a teacher has
-//Print students/teachers as Person objects (in departments)
 
 int main(void)
 {
@@ -46,7 +43,7 @@ int main(void)
 
   //Open Students.txt file
   ifstream file("Students.txt", ios::in);
-
+  
   //Verify that file opened successfully
   if (!file)
   {
@@ -79,7 +76,7 @@ int main(void)
     getline(file, date, '|');
     getline(file, gender, '|');
     getline(file, program, '|');
-
+	
 	//try-catch for dynamic memory allocation
 	try
 	{
@@ -138,13 +135,13 @@ int main(void)
 
   //Open Teachers.txt file
   file.open("Teachers.txt");
-
+  
   //Verify that file opened successfully
   if (!file)
   {
   	cerr << "File failed to open." << endl;
   	exit (EXIT_FAILURE);
-  }
+  }  
 
   //Read in teachers
   while(true)
@@ -179,7 +176,7 @@ int main(void)
 	catch (bad_alloc &memoryAllocationException)
 	{
 		cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
-	}
+	}	
 
   }
   file.close();
@@ -198,7 +195,7 @@ int main(void)
 
   //Open Courses.txt file
   file.open("Courses.txt");
-
+  
   //Verify that file opened successfully
   if (!file)
   {
@@ -235,12 +232,10 @@ int main(void)
     getline(file, junk); //Clear \n at end of line
 
 	//try-catch for dynamic memory allocation
-  Course *course;
-
 	try
 	{
 	    //Declare and instantiate course objects
-	    course = new Course(subject, stoi(number), stoi(credits), lvl, title);
+	    Course *course = new Course(subject, stoi(number), stoi(credits), lvl, title);
 	    courses.insert(make_pair(subject + ' ' + number, course));
 	}
 	catch (bad_alloc &memoryAllocationException)
@@ -353,7 +348,7 @@ int main(void)
 
   //Read in departments
   file.open("Departments.txt");
-
+  
   //Verify that file opened successfully
   if (!file)
   {
@@ -380,13 +375,12 @@ int main(void)
     getline(file, mems, '|');
     getline(file, crses, '|');
     getline(file, junk); //Clear \n at end of line
-
+    
 	//try-catch for dynamic memory allocation
-  Department *dept;
 	try
 	{
 	    //Declare and instantiate department objects
-	    dept = new Department(deptname);
+	    Department *dept = new Department(deptname);
 	    departments.push_back(dept);
 	}
 	catch (bad_alloc &memoryAllocationException)
@@ -685,24 +679,24 @@ int main(void)
     	Student *student = iterator_t->second;
     	delete student;
     }
-    students.clear();
-
+    students.clear();  
+  
     for (teacher_iter iterator_t = teachers.begin(); iterator_t != teachers.end(); iterator_t++)
 	{
     	Teacher *teacher = iterator_t->second;
     	delete teacher;
     }
     teachers.clear();
-
+  
     for (course_iter iterator_t = courses.begin(); iterator_t != courses.end(); iterator_t++)
 	{
     	Course *course = iterator_t->second;
     	delete course;
     }
     courses.clear();
-
+	        
    for(Department *department : departments)
    {
-     delete department;
+     delete *department;
    }
 }
