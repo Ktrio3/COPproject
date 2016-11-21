@@ -92,7 +92,7 @@ TeachingAst &Course::getTA(int num)
 **************************************/
 void Course::removeTeacher(int num)
 {
-  //instructors.erase(num);
+  instructors.erase(instructors.begin() + num);
 }
 
 /*************************************
