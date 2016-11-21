@@ -196,15 +196,6 @@ int main(void)
   	while (end != -1)
   	{
   		token = instructors.substr(start, end);
-<<<<<<< HEAD
-  		start = end + 1;
-  		end = instructors.find(',', start);
-  		if (end == -1)
-  		{
-  			token = instructors.substr(start, instructors.length());
-  		}
-  		course->assignTeacher(teachers[stoi(token)].second);	//Assign each teacher to course based on UID
-=======
   		course->assignTeacher(teachers[stoi(token)]);	//Assign each teacher to course based on UID
 
       start = end + 1;
@@ -216,7 +207,6 @@ int main(void)
     {
       token = instructors.substr(start, instructors.length());
       course->assignTeacher(teachers[stoi(token)]);
->>>>>>> fd58e4983a612ac6f764cf6bf881677138ee054a
     }
 
 	  //Seperate teachAsts string into separate TAs
@@ -228,13 +218,6 @@ int main(void)
   		token = teachAsts.substr(start, end);
   		start = end + 1;
   		end = teachAsts.find(',', start);
-<<<<<<< HEAD
-  		if (end == -1)
-  		{
-  			token = teachAsts.substr(start, teachAsts.length());
-  		}
-  		course->assignTA(students[stoi(token)].second);	//Assign each TA to course based on UID
-=======
 
       TeachingAst *TA = dynamic_cast < TeachingAst * > (students[stoi(token)]);
       if(TA != nullptr)
@@ -253,7 +236,6 @@ int main(void)
       {
         course->assignTA(TA);	//Assign each TA to course based on UID]
       }
->>>>>>> fd58e4983a612ac6f764cf6bf881677138ee054a
     }
 
   	//Seperate pupils string into separate students
@@ -264,14 +246,6 @@ int main(void)
   	{
   		token = pupils.substr(start, end);
   		start = end + 1;
-<<<<<<< HEAD
-  		end = pupils.find(',', start);
-  		if (end == -1)
-  		{
-  			token = pupils.substr(start, pupils.length());
-  		}
-  		course->addStudent(students[stoi(token)].second);	//Add each student to course roster based on UID
-=======
 
   		course->addStudent(students[stoi(token)]);	//Add each student to course roster based on UID
       students[stoi(token)]->registerCrs(course);  //Add course to students schedule
@@ -285,7 +259,6 @@ int main(void)
       token = pupils.substr(start, pupils.length());
       course->addStudent(students[stoi(token)]);
       students[stoi(token)]->registerCrs(course);  //Add course to students schedule
->>>>>>> fd58e4983a612ac6f764cf6bf881677138ee054a
     }
   }
 
