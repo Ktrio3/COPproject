@@ -429,10 +429,10 @@ int main(void)
   //Add Student to the course
   cout << "Creating a new Undergrad Student named Study McFake and enrolling in "
     << testCourse->getTitle() << ":" << endl;
-  UGradStudent *newStudent = new UGradStudent(100056, "Study McFake", "01/11/1992", "M", "BS", "Computer Engineering");
-  students.insert(make_pair(newStudent->getUID(), newStudent)); //Add student to our map
-  testCourse->addStudent(newStudent); //Add student to course
-  newStudent->registerCrs(testCourse);  //Add course to students schedule
+  UGradStudent newStudent = UGradStudent(100056, "Study McFake", "01/11/1992", "M", "BS", "Computer Engineering");
+  students.insert(make_pair(newStudent.getUID(), &newStudent)); //Add student to our map
+  testCourse->addStudent(&newStudent); //Add student to course
+  newStudent.registerCrs(testCourse);  //Add course to students schedule
   testCourse->printRoster();
   cout << endl;
 
@@ -473,10 +473,10 @@ int main(void)
   //Add instructor to the course
   cout << "Creating a new professor named Teachy McFake and assigning to "
     << testCourse->getTitle() << ":" << endl;
-  Teacher *newTeacher = new Teacher(100021, "Teachy McFake", "01/11/1992", "M", "Professor");
-  teachers.insert(make_pair(newTeacher->getUID(), newTeacher)); //Add teacher to our map
-  testCourse->assignTeacher(newTeacher); //Add teacher to course
-  newTeacher->assignCourse(testCourse);  //Add course to teachers schedule
+  Teacher newTeacher = Teacher(100021, "Teachy McFake", "01/11/1992", "M", "Professor");
+  teachers.insert(make_pair(newTeacher.getUID(), &newTeacher)); //Add teacher to our map
+  testCourse->assignTeacher(&newTeacher); //Add teacher to course
+  newTeacher.assignCourse(testCourse);  //Add course to teachers schedule
   testCourse->printTeachers();
   cout << endl;
 
@@ -509,10 +509,10 @@ int main(void)
   //Add TA to the course
   cout << "Creating a new TA named TA McFake and assigning to "
     << testCourse->getTitle() << ":" << endl;
-  TeachingAst *newTA = new TeachingAst(100011, "TA McFake", "01/11/1992", "M", "MS", "Cybersecurity");
-  students.insert(make_pair(newTA->getUID(), newTA)); //Add TA to our map
-  testCourse->assignTA(newTA); //Add teacher to course
-  newTA->assignCourse(testCourse);  //Add course to teachers schedule
+  TeachingAst newTA = TeachingAst(100011, "TA McFake", "01/11/1992", "M", "MS", "Cybersecurity");
+  students.insert(make_pair(newTA.getUID(), &newTA)); //Add TA to our map
+  testCourse->assignTA(&newTA); //Add teacher to course
+  newTA.assignCourse(testCourse);  //Add course to teachers schedule
   testCourse->printTAs();
   cout << endl;
 
@@ -541,7 +541,7 @@ int main(void)
 
   //Add member to department
   cout << "Adding Study McFake to " << testDept->getName() << ":" << endl;
-  testDept->addMember(newStudent);
+  testDept->addMember(&newStudent);
   testDept->printMembers();
   cout << endl;
 
@@ -572,7 +572,7 @@ int main(void)
 
   //Add faculty to department
   cout << "Adding Teachy McFake to " << testDept->getName() << ":" << endl;
-  testDept->addFaculty(newTeacher);
+  testDept->addFaculty(&newTeacher);
   testDept->printFaculty();
   cout << endl;
 
