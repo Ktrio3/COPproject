@@ -241,16 +241,23 @@ int main(void)
   	//Seperate pupils string into separate students
   	start = 0;
   	end = pupils.find(',');
+  	int end2 = pupils.find(':');
+  	string grd_token = "";
+  	string uid_token = "";
 
   	while (end != -1)
   	{
   		token = pupils.substr(start, end);
+  		uid_token = token.substr(start, end2); //Separate student's uid from token
+  		grd_token = token.substr(end2+1, end); //Separate student's grade from token
   		start = end + 1;
-
-  		course->addStudent(students[stoi(token)]);	//Add each student to course roster based on UID
-      students[stoi(token)]->registerCrs(course);  //Add course to students schedule
+	
+  		course->addStudent(students[stoi(uid_token)]);	//Add each student to course roster based on UID
+  		course->assignGrade(students[stoi(uid_token), stoi(grd_token)]); //Add student's grade to course's gradebook
+        students[stoi(uid_token)]->registerCrs(course);  //Add course to students schedule
 
       end = pupils.find(',', start);
+      end2 = pupils.find(':', start);
     }
 
     //Read in final (or only) value, if any present
