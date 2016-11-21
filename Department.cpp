@@ -20,33 +20,62 @@ Department::~Department()
 /*************************************
 /addMember()
 /
-/Adds a Person to the departmentby pushing onto members vector.
+/Adds a Student to the department by pushing onto members vector.
 **************************************/
-void Department::addMember(Person *person)
+void Department::addMember(Student *student)
 {
-  members.push_back(person);
+  members.push_back(student);
+}
+
+/*************************************
+/addFaculty()
+/
+/Adds a Teacher to the department by pushing onto faculty vector.
+**************************************/
+void Department::addFaculty(Teacher *teacher)
+{
+  faculty.push_back(teacher);
 }
 
 /*************************************
 /getMember()
 /
-/Returns the person at position num
+/Returns the student at position num
 **************************************/
-Person &Department::getMember(int num)
+Student &Department::getMember(int num)
 {
   return *members[num];
 }
 
 /*************************************
+/getFaculty()
+/
+/Returns the teacher at position num
+**************************************/
+Teacher &Department::getFaculty(int num)
+{
+  return *faculty[num];
+}
+
+/*************************************
 /numMembers()
 /
-/Returns the numbers of members in the department
+/Returns the number of students in the department
 **************************************/
 int Department::numMembers()
 {
   return members.size();
 }
 
+/*************************************
+/numFaculty()
+/
+/Returns the number of teachers in the department
+**************************************/
+int Department::numFaculty()
+{
+  return faculty.size();
+}
 
 /*************************************
 /addCourse()
@@ -116,9 +145,19 @@ void Department::print()
 /*************************************
 /printMembers()
 /
-/Prints the members of the department
+/Prints the students of the department
 **************************************/
 void Department::printMembers()
+{
+
+}
+
+/*************************************
+/printFaculty()
+/
+/Prints the teachers of the department
+**************************************/
+void Department::printFaculty()
 {
 
 }

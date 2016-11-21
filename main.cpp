@@ -281,9 +281,94 @@ int main(void)
   cout << endl;
 
   //Read in departments
+  file.open("Departments.txt");
 
-  //Once in, add members by UID and course by subj/num
+  //Read in department
+  while(true)
+  {
+    //Variables for Department constructor
+    string deptname = "";
+    string fclty;
+    string mems;
+    string crses;
+    string junk; //Used to discard extra \n char at end of line
 
+    getline(file, deptname, '|');
+
+    if(deptname == "") //End of file if no name found
+      break;
+
+    getline(file, fclty, '|');
+    getline(file, mems, '|');
+    getline(file, crses, '|');
+    getline(file, junk); //Clear \n at end of line
+
+    //Declare and instantiate department objects
+    Department *dept = new Department(deptname);
+    departments.push_back(dept);
+
+  	//Separate fclty string into separate faculty members of department
+  	start = 0;
+  	end = fclty.find(',');
+
+  	while (end != -1)
+  	{
+  		token = fclty.substr(start, end);
+  		dept->addFaculty(teachers[stoi(token)]);	//Assign each teacher to dept's faculty based on UID
+
+      start = end + 1;
+      end = fclty.find(',', start);
+    }
+
+    //Read in final (or only) value, if any present
+    if(end == -1 && crses.length() != 0)
+    {
+      token = fclty.substr(start, fclty.length());
+      dept->addFaculty(teachers[stoi(token)]);
+    }
+    
+    //Separate mems string into separate student members of department
+  	start = 0;
+  	end = mems.find(',');
+
+  	while (end != -1)
+  	{
+  		token = mems.substr(start, end);
+  		dept->addMember(students[stoi(token)]);	//Assign each student to dept based on UID
+
+      start = end + 1;
+      end = mems.find(',', start);
+    }
+
+    //Read in final (or only) value, if any present
+    if(end == -1 && crses.length() != 0)
+    {
+      token = mems.substr(start, mems.length());
+      dept->addMember(students[stoi(token)]);
+    }
+    
+    //Separate crses string into separate courses for department
+  	start = 0;
+  	end = crses.find(',');
+
+  	while (end != -1)
+  	{
+  		token = crses.substr(start, end);
+  		//dept->addCourse(courses[stoi(token)]);	//Assign each student to dept based on UID
+		//(Note: Need to make courses vector into map for this to work... can 1st element of map be a string?.. can we merge subj and crs #?
+      start = end + 1;
+      end = crses.find(',', start);
+    }
+
+    //Read in final (or only) value, if any present
+    if(end == -1 && crses.length() != 0)
+    {
+      token = crses.substr(start, crses.length());
+      //dept->addMember(students[stoi(token)]);    (Same issue as above)
+    }    
+  
+  
+  file.close();
   //Print departments
 
   //Print the students in a course
