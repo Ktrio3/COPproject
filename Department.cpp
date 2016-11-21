@@ -149,7 +149,11 @@ void Department::print()
 **************************************/
 void Department::printMembers()
 {
-
+  for(Student *student : members)
+  {
+    student->print();
+    cout << endl;
+  }
 }
 
 /*************************************
@@ -159,7 +163,11 @@ void Department::printMembers()
 **************************************/
 void Department::printFaculty()
 {
-
+  for(Teacher *teacher : faculty)
+  {
+    teacher->print();
+    cout << endl;
+  }
 }
 
 /*************************************
@@ -169,5 +177,9 @@ void Department::printFaculty()
 **************************************/
 void Department::printCourses()
 {
-
+  for(Course *course : courses)
+  {
+    course->print();
+    cout << endl;
+  }
 }

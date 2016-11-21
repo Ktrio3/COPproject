@@ -23,6 +23,12 @@
 
 using namespace std;
 
+//Delete dynamic memory
+//Making sure files are opening
+//Check functions in classes -- ie some of the basic ones we don't use have no definition
+//Add some more silly functions
+//Clean up/style comments
+
 int main(void)
 {
   map<int, Student *> students; //May want to make map with UID as key.
@@ -510,11 +516,97 @@ int main(void)
   testCourse->printTAs();
   cout << endl;
 
-  //Print Department members
+  //Find a department with members
+  Department *testDept = nullptr;
+  for(Department *department : departments) {
+    if(department->numMembers() != 0)
+    {
+      testDept = department;
+      break;
+    }
+  }
 
-  //Print department courses
+  //Print Department members
+  if(testDept != nullptr)
+  {
+    cout << "Printing student member(s) for " << testDept->getName() << ":" << endl;
+    testDept->printMembers();
+    cout << endl;
+  }
+  else
+  {
+    cout << "No departments in Departments.txt started with members. Adding a member now..." << endl;
+    testDept = departments[0];
+  }
 
   //Add member to department
+  cout << "Adding Study McFake to " << testDept->getName() << ":" << endl;
+  testDept->addMember(newStudent);
+  testDept->printMembers();
+  cout << endl;
+
+  //Print department faculty
+  if(testDept->numFaculty() == 0)
+  {
+    for(Department *department : departments) {
+      if(department->numFaculty() != 0)
+      {
+        testDept = department;
+        break;
+      }
+    }
+  }
+
+  //Print Department faculty
+  if(testDept != nullptr)
+  {
+    cout << "Printing faculty for " << testDept->getName() << ":" << endl;
+    testDept->printFaculty();
+    cout << endl;
+  }
+  else
+  {
+    cout << "No departments in Departments.txt started with faculty. Adding a faculty member now..." << endl;
+    testDept = departments[0];
+  }
+
+  //Add faculty to department
+  cout << "Adding Teachy McFake to " << testDept->getName() << ":" << endl;
+  testDept->addFaculty(newTeacher);
+  testDept->printFaculty();
+  cout << endl;
+
+  //Check if department has courses
+  if(testDept->numCourses() == 0)
+  {
+    for(Department *department : departments) {
+      if(department->numCourses() != 0)
+      {
+        testDept = department;
+        break;
+      }
+    }
+  }
+
+  //Print Department courses
+  if(testDept != nullptr)
+  {
+    cout << "Printing course(s) for " << testDept->getName() << ":" << endl;
+    testDept->printCourses();
+    cout << endl;
+  }
+  else
+  {
+    cout << "No departments in Departments.txt started with courses. Adding a course now..." << endl;
+    testDept = departments[0];
+  }
 
   //Add course to department
+  cout << "Creating a new Course, Underwater Scuba Golfing, and adding to " << testDept->getName() << ":" << endl;
+  Course newCourse = Course("SCU", 1234, 4, "U", "Underwater Scuba Golfing");
+  string newCourseKey = newCourse.getSubject() + " " + to_string(newCourse.getNumber());
+  courses.insert(make_pair(newCourseKey, &newCourse)); //Add Course to our map
+  testDept->addCourse(&newCourse); //Add course to department
+  testDept->printCourses();
+  cout << endl;
 }
