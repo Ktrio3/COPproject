@@ -10,6 +10,8 @@
 #include <vector>
 #include <map>
 #include <iomanip>
+#include <cstdlib>
+#include <new>
 
 #include "Person.h"
 #include "Student.h"
@@ -35,6 +37,13 @@ int main(void)
 
   //Open Students.txt file
   ifstream file("Students.txt", ios::in);
+  
+  //Verify that file opened successfully
+  if (!file)
+  {
+  	cerr << "File failed to open." << endl;
+  	exit (EXIT_FAILURE);
+  }
 
   //Read in student
   while(true)
@@ -61,26 +70,33 @@ int main(void)
     getline(file, date, '|');
     getline(file, gender, '|');
     getline(file, program, '|');
-
-    if(role == "U")
-    {
-      UGradStudent *student = new UGradStudent(stoi(id), name, date, gender, lvl, program);
-      students.insert(make_pair(stoi(id), student));
-    }
-    else if(role == "TA")
-    {
-      TeachingAst *student = new TeachingAst(stoi(id), name, date, gender, lvl, program);
-      students.insert(make_pair(stoi(id), student));
-    }
-    else if(role == "RA")
-    {
-      //Read in the extra project specific to RA
-      string project;
-      getline(file, project, '|');
-      ResearchAst *student = new ResearchAst(stoi(id), name, date, gender, lvl, program, project);
-      students.insert(make_pair(stoi(id), student));
-    }
-
+	
+	//try-catch for dynamic memory allocation
+	try
+	{
+	    if(role == "U")
+	    {
+	      UGradStudent *student = new UGradStudent(stoi(id), name, date, gender, lvl, program);
+	      students.insert(make_pair(stoi(id), student));
+	    }
+	    else if(role == "TA")
+	    {
+	      TeachingAst *student = new TeachingAst(stoi(id), name, date, gender, lvl, program);
+	      students.insert(make_pair(stoi(id), student));
+	    }
+	    else if(role == "RA")
+	    {
+	      //Read in the extra project specific to RA
+	      string project;
+	      getline(file, project, '|');
+	      ResearchAst *student = new ResearchAst(stoi(id), name, date, gender, lvl, program, project);
+	      students.insert(make_pair(stoi(id), student));
+	    }
+	}
+	catch (bad_alloc &memoryAllocationException)
+	{
+		cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
+	}
     getline(file, junk); //Ignore \n at end of line
   }
 
@@ -113,6 +129,13 @@ int main(void)
 
   //Open Teachers.txt file
   file.open("Teachers.txt");
+  
+  //Verify that file opened successfully
+  if (!file)
+  {
+  	cerr << "File failed to open." << endl;
+  	exit (EXIT_FAILURE);
+  }  
 
   //Read in teachers
   while(true)
@@ -136,9 +159,19 @@ int main(void)
     getline(file, gender, '|');
     getline(file, junk); //Ignore \n
 
-    //Declare and instantiate teacher objects
-    Teacher *teacher = new Teacher(stoi(id), name, date, gender, role);
-    teachers.insert(make_pair(stoi(id), teacher));
+
+	//try-catch for dynamic memory allocation
+	try
+	{
+	    //Declare and instantiate teacher objects
+	    Teacher *teacher = new Teacher(stoi(id), name, date, gender, role);
+	    teachers.insert(make_pair(stoi(id), teacher));
+	}
+	catch (bad_alloc &memoryAllocationException)
+	{
+		cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
+	}	
+
   }
   file.close();
 
@@ -156,6 +189,13 @@ int main(void)
 
   //Open Courses.txt file
   file.open("Courses.txt");
+  
+  //Verify that file opened successfully
+  if (!file)
+  {
+  	cerr << "File failed to open." << endl;
+  	exit (EXIT_FAILURE);
+  }
 
   //Read in courses
   while(true)
@@ -185,9 +225,17 @@ int main(void)
     getline(file, pupils, '|');
     getline(file, junk); //Clear \n at end of line
 
-    //Declare and instantiate course objects
-    Course *course = new Course(subject, stoi(number), stoi(credits), lvl, title);
-    courses.insert(make_pair(subject + ' ' + number, course));
+	//try-catch for dynamic memory allocation
+	try
+	{
+	    //Declare and instantiate course objects
+	    Course *course = new Course(subject, stoi(number), stoi(credits), lvl, title);
+	    courses.insert(make_pair(subject + ' ' + number, course));
+	}
+	catch (bad_alloc &memoryAllocationException)
+	{
+		cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
+	}
 
   	//Seperate teachers string into separate teachers
   	int start = 0;
@@ -250,7 +298,7 @@ int main(void)
   	while(end != -1 && pupils.length() != 0) //A course may not have students yet
   	{
   		token = pupils.substr(start, end - start);
-      end2 = token.find(':', 0);
+        end2 = token.find(':', 0);
   		uid_token = token.substr(0, end2); //Separate student's uid from token
   		grd_token = token.substr(end2+1, token.length() - end2+1); //Separate student's grade from token
 
@@ -294,6 +342,13 @@ int main(void)
 
   //Read in departments
   file.open("Departments.txt");
+  
+  //Verify that file opened successfully
+  if (!file)
+  {
+  	cerr << "File failed to open." << endl;
+  	exit (EXIT_FAILURE);
+  }
 
   //Read in department
   while(true)
@@ -314,10 +369,18 @@ int main(void)
     getline(file, mems, '|');
     getline(file, crses, '|');
     getline(file, junk); //Clear \n at end of line
-
-    //Declare and instantiate department objects
-    Department *dept = new Department(deptname);
-    departments.push_back(dept);
+    
+	//try-catch for dynamic memory allocation
+	try
+	{
+	    //Declare and instantiate department objects
+	    Department *dept = new Department(deptname);
+	    departments.push_back(dept);
+	}
+	catch (bad_alloc &memoryAllocationException)
+	{
+		cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
+	}
 
   	//Separate fclty string into separate faculty members of department
   	int start = 0;
@@ -517,4 +580,31 @@ int main(void)
   //Add member to department
 
   //Add course to department
+  
+  //Delete dynamically allocated memory for students, teachers, courses, and departments
+    for (student_iter iterator_t = students.begin(); iterator_t != students.end(); iterator_t++)
+	{
+    	Student *student = iterator_t->second;
+    	delete student;
+    }
+    students.clear();  
+  
+    for (teacher_iter iterator_t = teachers.begin(); iterator_t != teachers.end(); iterator_t++)
+	{
+    	Teacher *teacher = iterator_t->second;
+    	delete teacher;
+    }
+    teachers.clear();
+  
+    for (course_iter iterator_t = courses.begin(); iterator_t != courses.end(); iterator_t++)
+	{
+    	Course *course = iterator_t->second;
+    	delete course;
+    }
+    courses.clear();
+	        
+   for(Department *department : departments)
+   {
+     delete *department;
+   }
 }
