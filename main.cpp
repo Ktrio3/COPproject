@@ -248,6 +248,7 @@ int main(void)
   		start = end + 1;
 
   		course->addStudent(students[stoi(token)]);	//Add each student to course roster based on UID
+      students[stoi(token)]->registerCrs(course);  //Add course to students schedule
 
       end = pupils.find(',', start);
     }
@@ -257,6 +258,7 @@ int main(void)
     {
       token = pupils.substr(start, pupils.length());
       course->addStudent(students[stoi(token)]);
+      students[stoi(token)]->registerCrs(course);  //Add course to students schedule
     }
   }
 
@@ -294,8 +296,28 @@ int main(void)
   courses[0]->printGradebook();
   cout << endl;
 
+  //Add Student to the course
+  cout << "Creating a new Undergrad Student named Study McFake and enrolling in "
+    << courses[0]->getTitle() << ":" << endl;
+  UGradStudent *newStudent = new UGradStudent(100056, "Study McFake", "01/11/1992", "M", "BS", "Computer Engineering");
+  students.insert(make_pair(newStudent->getUID(), newStudent)); //Add student to our map
+  courses[0]->addStudent(newStudent); //Add student to course
+  newStudent->registerCrs(courses[0]);  //Add course to students schedule
+  courses[0]->printRoster();
+  cout << endl;
+
   //Print instructors
   cout << "Printing instructor(s) for " << courses[0]->getTitle() << ":" << endl;
+  courses[0]->printTeachers();
+  cout << endl;
+
+  //Add instructor to the course
+  cout << "Creating a new professor named Teachy McFake and assigning to "
+    << courses[0]->getTitle() << ":" << endl;
+  Teacher *newTeacher = new Teacher(100021, "Teachy McFake", "01/11/1992", "M", "Professor");
+  teachers.insert(make_pair(newTeacher->getUID(), newTeacher)); //Add teacher to our map
+  courses[0]->assignTeacher(newTeacher); //Add teacher to course
+  newTeacher->assignCourse(courses[0]);  //Add course to teachers schedule
   courses[0]->printTeachers();
   cout << endl;
 
@@ -305,8 +327,6 @@ int main(void)
   cout << endl;
 
   //Add TA to the course
-
-  //Add instructor to the course
 
   //Print Department members
 

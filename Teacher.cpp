@@ -27,6 +27,16 @@ string Teacher::getRole()
 }
 
 /*************************************
+/assignCrs()
+/
+/Adds a course to the students schedule
+**************************************/
+void Teacher::assignCourse(Course *course)
+{
+	Lectures.push_back(course);
+}
+
+/*************************************
 /print()
 /
 /Prints information about the teacher
@@ -44,7 +54,7 @@ void Teacher::print()
 **************************************/
 void Teacher::printCourses()
 {
-	
+
 }
 
 //Destructor for teacher

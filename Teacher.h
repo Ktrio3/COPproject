@@ -24,6 +24,7 @@ class Teacher : public Person
 
 		string getRole();
 
+		void assignCourse(Course *);
 		int numCourses(); //Returns the number of courses the teacher is assigned to
 
 		void print(); //Prints information about the teacher

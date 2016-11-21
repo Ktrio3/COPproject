@@ -19,6 +19,16 @@ Student::Student(int UnivID, string fullname, string BD, string gend, string lvl
 }
 
 /*************************************
+/registerCrs()
+/
+/Adds a course to the students schedule
+**************************************/
+void Student::registerCrs(Course *course)
+{
+	schedule.push_back(course);
+}
+
+/*************************************
 /print()
 /
 /Prints information about the student
