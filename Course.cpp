@@ -193,6 +193,32 @@ void Course::printGradebook()
 }
 
 /*************************************
+/printTeachers()
+/
+/Prints the name of each teacher in the course roster
+**************************************/
+void Course::printTeachers()
+{
+  for(Teacher *teacher : instructors)
+  {
+    cout << teacher->getName()  << endl;
+  }
+}
+
+/*************************************
+/printTAs()
+/
+/Prints the name of each TA in the course roster
+**************************************/
+void Course::printTAs()
+{
+  for(TeachingAst *TA : TAs)
+  {
+    cout << TA->getName()  << endl;
+  }
+}
+
+/*************************************
 /setSubject()
 /
 /Sets the subject for the course

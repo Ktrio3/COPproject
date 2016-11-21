@@ -200,11 +200,13 @@ int main(void)
 
       start = end + 1;
       end = instructors.find(',', start);
-      //If at end of list, add final value
-  		if (end == -1)
-  		{
-  			token = instructors.substr(start, instructors.length());
-  		}
+    }
+
+    //Read in final (or only) value, if any present
+    if(end == -1 && pupils.length() != 0)
+    {
+      token = instructors.substr(start, instructors.length());
+      course->assignTeacher(teachers[stoi(token)]);
     }
 
 	  //Seperate teachAsts string into separate TAs
@@ -222,18 +224,18 @@ int main(void)
       {
         course->assignTA(TA);	//Assign each TA to course based on UID
       }
+    }
 
-      //If at end of list, add final value
-      if (end == -1)
-  		{
-  			token = teachAsts.substr(start, teachAsts.length());
+    //Read in final (or only) value, if any present
+    if(end == -1 && pupils.length() != 0)
+    {
+      token = teachAsts.substr(start, teachAsts.length());
 
-        TeachingAst *TA = dynamic_cast < TeachingAst * > (students[stoi(token)]);
-        if(TA != nullptr)
-        {
-          course->assignTA(TA);	//Assign each TA to course based on UID
-        }
-  		}
+      TeachingAst *TA = dynamic_cast < TeachingAst * > (students[stoi(token)]);
+      if(TA != nullptr)
+      {
+        course->assignTA(TA);	//Assign each TA to course based on UID]
+      }
     }
 
   	//Seperate pupils string into separate students
@@ -248,12 +250,13 @@ int main(void)
   		course->addStudent(students[stoi(token)]);	//Add each student to course roster based on UID
 
       end = pupils.find(',', start);
-      //If at end of list, add final value
-  		if (end == -1)
-  		{
-  			token = pupils.substr(start, pupils.length());
-        course->addStudent(students[stoi(token)]);
-  		}
+    }
+
+    //Read in final (or only) value, if any present
+    if (end == -1 && pupils.length() != 0)
+    {
+      token = pupils.substr(start, pupils.length());
+      course->addStudent(students[stoi(token)]);
     }
   }
 
@@ -285,8 +288,21 @@ int main(void)
   cout << endl;
 
   //Change the grade for a student in the course
+  cout << "Changing grade for " << courses[0]->getStudent(0).getName() << " in "
+    << courses[0]->getTitle() << " to a 105%:" << endl;
+  courses[0]->assignGrade(courses[0]->getStudent(0).getUID(), 105);
+  courses[0]->printGradebook();
+  cout << endl;
+
+  //Print instructors
+  cout << "Printing instructor(s) for " << courses[0]->getTitle() << ":" << endl;
+  courses[0]->printTeachers();
+  cout << endl;
 
   //Print TA for the course
+  cout << "Printing TA(s) for " << courses[0]->getTitle() << ":" << endl;
+  courses[0]->printTAs();
+  cout << endl;
 
   //Add TA to the course
 

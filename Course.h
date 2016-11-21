@@ -46,6 +46,8 @@ public:
   void print(); //Prints the course info
   void printRoster(); //Prints the name and Unumber of each student in course
   void printGradebook();  //Prints the grade of each student in the course
+  void printTeachers(); //Prints the teachers for the course
+  void printTAs();  //Prints TAs for the course
 
   void setSubject(string subj);
   string getSubject();
