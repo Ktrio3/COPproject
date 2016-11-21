@@ -199,7 +199,7 @@ int main(void)
   		{
   			token = instructors.substr(start, instructors.length());
   		}
-  		course->assignTeacher(teachers[token].second);	//Assign each teacher to course based on UID
+  		course->assignTeacher(teachers[stoi(token)].second);	//Assign each teacher to course based on UID
     }
     
 	//Seperate teachAsts string into separate TAs
@@ -215,7 +215,7 @@ int main(void)
   		{
   			token = teachAsts.substr(start, teachAsts.length());
   		}
-  		course->assignTA(students[token].second);	//Assign each TA to course based on UID
+  		course->assignTA(students[stoi(token)].second);	//Assign each TA to course based on UID
     }
 
 	//Seperate pupils string into separate students
@@ -231,7 +231,7 @@ int main(void)
   		{
   			token = pupils.substr(start, pupils.length());
   		}
-  		course->addStudent(students[token].second);	//Add each student to course roster based on UID
+  		course->addStudent(students[stoi(token)].second);	//Add each student to course roster based on UID
     }
   }
   

@@ -1,3 +1,3 @@
-Computer Science and Engineering | 564738291 987654321 123456789 789451263 992837465 | COP 3331
-Mechanical Engineering
-Super Cool Department | | CUL 1234
+Computer Science and Engineering|564738291,987654321,192837465,123456789,789451263|3331|
+Mechanical Engineering|909086767,888888888|4123|
+Super Cool Department|783645123,222222222|1234|
