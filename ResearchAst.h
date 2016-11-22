@@ -26,7 +26,7 @@ class ResearchAst : public GradStudent
 		virtual ~ResearchAst(); //Prototype for destructor
 
 	protected:
-		string project; //string for program
+		string project; //string for project
 
 };
 #endif

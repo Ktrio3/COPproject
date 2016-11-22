@@ -33,7 +33,6 @@ class TeachingAst : public GradStudent
 		virtual ~TeachingAst(); //Prototype for destructor
 
 	protected:
-		string project; //string for program
 		vector< Course *> TACourses; //Vector of courses the teaching assistant is a TA for
 
 };
