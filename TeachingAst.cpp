@@ -58,7 +58,7 @@ void TeachingAst::print()
 **************************************/
 void TeachingAst::printTACourses()
 {
-	for (int i = 0; i <= numTACourses()-1; i++)
+	for (int i = 0; i < this->numTACourses(); i++)
 	{
 		cout << TACourses[i]->getSubject() << " " << TACourses[i]->getNumber() << endl;
 	}

@@ -19,7 +19,7 @@ class UGradStudent : public Student
 		UGradStudent(int UnivID, string fullname, string BD, string gend, string lvl, string maj); //Prototype for constructor
 
 		void declareMjr(string maj); //Declares a new major for the student
-		string getMjr(); //Returns the major the student is studying
+		string getMjr() const; //Returns the major the student is studying
 
 		void print(); //Prints the courses the student is in
 
