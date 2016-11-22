@@ -39,9 +39,10 @@ Course &Student::getCourse(int num)
 	{
 		return *schedule[num];
 	}
-  	else
-  	{
+  else
+  {
   		cerr << "Index for getting course is out of range." << endl;
+			exit(0);
 	}
 }
 
@@ -73,7 +74,7 @@ void Student::print()
 **************************************/
 void Student::printCourses()
 {
-	for (int i = 0, int <= numCourses(), i++)
+	for (int i = 0; i < numCourses(); i++)
 	{
 		cout << schedule[i]->getSubject() << " " << schedule[i]->getNumber() << endl;
 	}

@@ -35,6 +35,6 @@ class Student : public Person
 
 	protected:
 		string level; //String for student level (e.g. PhD, Post-BS/A)
-		vector< const Course *> schedule; //Vector of courses the student is registered for
+		vector< Course *> schedule; //Vector of courses the student is registered for
 };
 #endif

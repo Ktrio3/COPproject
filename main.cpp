@@ -452,7 +452,7 @@ int main(void)
   }
 
   file.close();
-  
+
   //Print students
   cout << "Scanned in the following students from Students.txt:\n";
   for(student_iter iterator = students.begin(); iterator != students.end(); iterator++) {
@@ -461,6 +461,7 @@ int main(void)
     if(underStudent != nullptr)
     {
       underStudent->print();
+      cout << endl;
       cout << "Schedule:" << endl;
       underStudent->printCourses();
     }
@@ -469,8 +470,10 @@ int main(void)
     if(TA != nullptr)
     {
       TA->print();
+      cout << endl;
       cout << "Schedule:" << endl;
       TA->printCourses();
+      cout << endl;
       cout << "Courses TA for:" << endl;
       TA->printTACourses();
     }
@@ -479,13 +482,13 @@ int main(void)
     if(RA != nullptr)
     {
       RA->print();
+      cout << endl;
       cout << "Schedule:" << endl;
       RA->printCourses();
     }
     cout << "\n";
   }
-  cout << "\n";  
-  
+
   //Print teachers
   cout << "Scanned in the following teachers from Teachers.txt:\n";
   for(teacher_iter iterator_t = teachers.begin(); iterator_t != teachers.end(); iterator_t++) {
@@ -493,13 +496,13 @@ int main(void)
     if(teach != nullptr)
     {
       teach->print();
-      cout << "Courses Teaching:" << endl;
+      cout << endl << "Courses Teaching:" << endl;
       teach->printCourses();
       cout << endl;
     }
   }
   cout << endl;
-  
+
   //Print courses
   cout << "Scanned in the following courses from Courses.txt:\n";
   for(course_iter iterator_t = courses.begin(); iterator_t != courses.end(); iterator_t++) {
@@ -511,7 +514,7 @@ int main(void)
     }
   }
   cout << endl;
-  
+
   //Print departments
   cout << "Scanned in the following departments from Departments.txt:\n";
   for(Department *department : departments)
@@ -519,7 +522,6 @@ int main(void)
     department->print();
     cout << endl;
   }
-  cout << endl;
 
   Course *testCourse = nullptr;
   //Find a course with students in it for testing purposes

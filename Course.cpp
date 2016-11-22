@@ -66,9 +66,10 @@ Teacher &Course::getTeacher(int num)
 	{
 		return *instructors[num];
 	}
-  	else
-  	{
+  else
+  {
   		cerr << "Index for getting teacher is out of range." << endl;
+      exit(0);
 	}
 }
 
@@ -83,9 +84,10 @@ Student &Course::getStudent(int num)
 	{
 		return *roster[num];
 	}
-  	else
-  	{
+  else
+  {
   		cerr << "Index for getting student is out of range." << endl;
+      exit(0);
 	}
 }
 
@@ -100,9 +102,10 @@ TeachingAst &Course::getTA(int num)
 	{
 		return *TAs[num];
 	}
-  	else
-  	{
-  		cerr << "Index for getting TA is out of range." << endl;
+  else
+  {
+  	cerr << "Index for getting TA is out of range." << endl;
+    exit(0);
 	}
 }
 
@@ -117,9 +120,10 @@ void Course::removeTeacher(int num)
 	{
 		instructors.erase(instructors.begin() + num);
 	}
-  	else
-  	{
-  		cerr << "Index for getting teacher is out of range." << endl;
+  else
+  {
+  	cerr << "Index for getting teacher is out of range." << endl;
+    exit(0);
 	}
 }
 
