@@ -21,20 +21,22 @@ class Teacher : public Person
 {
 	public:
 		Teacher(int UnivID, string fullname, string BD, string gend, string rol); //Prototype for constructor
+		~Teacher(); //Prototype for destructor
 
+		void setRole(string newRole);
 		string getRole();
 
 		void assignCourse(Course *); //Assigns a lecture course to the teacher
+		Course &getCourse(int num);	//Returns the course at position num
+		void removeCourse(int num); //Removes a course
 		int numCourses(); //Returns the number of courses the teacher is assigned to
 
 		void print(); //Prints information about the teacher
 		void printCourses(); //Prints the courses that they are teaching
 
-		~Teacher(); //Prototype for destructor
-
 	protected:
 		string role; //String for teacher role (e.g. adjunct, lecturer, etc.)
-		vector<Course *> Lectures; //Vector of courses the teacher is the instructor of
+		vector<Course *> lectures; //Vector of courses the teacher is the instructor of
 
 };
 #endif

@@ -12,11 +12,18 @@ using namespace std;
 
 //Constructor for person
 Person::Person(int UnivID, string fullname, string BD, string gend)
+:UID(UnivID), name(fullname), birthdate(BD), gender(gend)
+{
+}
+
+/*************************************
+/setUID()
+/
+/Sets the person's UID
+**************************************/
+void Person::setUID(int UnivID)
 {
 	UID = UnivID;
-	name = fullname;
-	birthdate = BD;
-	gender = gend;
 }
 
 /*************************************
@@ -30,6 +37,16 @@ int Person::getUID() const
 }
 
 /*************************************
+/setName()
+/
+/Sets the person's name
+**************************************/
+void Person::setName(string newName)
+{
+	name = newName;
+}
+
+/*************************************
 /getName()
 /
 /Returns the person's name
@@ -40,13 +57,33 @@ string Person::getName() const
 }
 
 /*************************************
-/getName()
+/setBirthdate()
 /
-/Returns the person's name
+/Sets the person's birthday
+**************************************/
+void Person::setBirthdate(string newBday)
+{
+	birthdate = newBday;
+}
+
+/*************************************
+/getBirthdate()
+/
+/Returns the person's birthdate
 **************************************/
 string Person::getBirthdate() const
 {
 	return birthdate;
+}
+
+/*************************************
+/setGender()
+/
+/Sets the Person's gender
+**************************************/
+void Person::setGender(string newGender)
+{
+	gender = newGender;
 }
 
 /*************************************
@@ -65,7 +102,7 @@ string Person::getGender() const
 /Prints information about the person, for example
 /		Kevin Dennis UID: U111111111 Birthday: 11/03/1995 Gender: M
 **************************************/
-void Person::print() const
+void Person::print()
 {
 	cout << this->getName() << " UID: U" << this->getUID() << " Birthday: " << this->getBirthdate() << " Gender: " << this->getGender();
 }

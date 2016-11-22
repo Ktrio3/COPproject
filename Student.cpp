@@ -13,9 +13,14 @@
 using namespace std;
 
 //Constructor for student
-Student::Student(int UnivID, string fullname, string BD, string gend, string lvl) : Person(UnivID, fullname, BD, gend)
+Student::Student(int UnivID, string fullname, string BD, string gend, string lvl)
+: Person(UnivID, fullname, BD, gend), level(lvl)
 {
-	level = lvl;
+}
+
+//Destructor for student
+Student::~Student()
+{
 }
 
 /*************************************
@@ -33,16 +38,34 @@ void Student::registerCrs(Course *course)
 /
 /Returns the course at position num
 **************************************/
-Course *Student::getCourse(int num)
+Course &Student::getCourse(int num)
 {
 	if ((num >= 0) && (num <= numCourses()))
 	{
-		return schedule[num];
+		return *schedule[num];
 	}
   else
   {
   		cerr << "Index for getting course is out of range." << endl;
 			exit(0);
+	}
+}
+
+/*************************************
+/removeCourse()
+/
+/Returns the course
+**************************************/
+void Student::removeCourse(int num)
+{
+	if ((num >= 0) && (num <= numCourses()))
+	{
+		schedule.erase(schedule.begin() + num);
+	}
+	else
+	{
+		cerr << "Index for removing course is out of range." << endl;
+		exit(0);
 	}
 }
 
@@ -99,6 +122,3 @@ void Student::setLvl(string lvl)
 {
 	level = lvl;
 }
-
-//Destructor for student
-Student::~Student(){};

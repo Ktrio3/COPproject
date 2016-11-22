@@ -12,9 +12,13 @@ using namespace std;
 
 //Constructor for undergraduate student
 UGradStudent::UGradStudent(int UnivID, string fullname, string BD, string gend, string lvl, string maj)
-: Student(UnivID, fullname, BD, gend, lvl)
+: Student(UnivID, fullname, BD, gend, lvl), majorStudied(maj)
 {
-	major = maj;
+}
+
+//Destructor for undergraduate student
+UGradStudent::~UGradStudent()
+{	
 }
 
 /*************************************
@@ -24,7 +28,7 @@ UGradStudent::UGradStudent(int UnivID, string fullname, string BD, string gend, 
 **************************************/
 void UGradStudent::declareMjr(string maj)
 {
-	major = maj;
+	majorStudied = maj;
 }
 
 /*************************************
@@ -34,7 +38,7 @@ void UGradStudent::declareMjr(string maj)
 **************************************/
 string UGradStudent::getMjr() const
 {
-	return major;
+	return majorStudied;
 }
 
 /*************************************
@@ -47,6 +51,3 @@ void UGradStudent::print()
 	this->Student::print();
 	cout << " Major: " << this->getMjr();;
 }
-
-//Destructor for undergraduate student
-UGradStudent::~UGradStudent(){};

@@ -17,13 +17,12 @@ class ResearchAst : public GradStudent
 {
 	public:
 		ResearchAst(int UnivID, string fullname, string BD, string gend, string lvl, string prog, string proj); //Prototype for constructor
+		virtual ~ResearchAst(); //Prototype for destructor
 
 		void assignProj(string proj); //Prototype for assign project function
-		string getProj();
+		string getProj() const;
 
 		virtual void print(); //Prototype for print function
-		
-		virtual ~ResearchAst(); //Prototype for destructor
 
 	protected:
 		string project; //string for program

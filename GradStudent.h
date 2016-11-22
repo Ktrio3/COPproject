@@ -13,19 +13,16 @@
 
 using namespace std;
 
-using namespace std;
-
 class GradStudent : public Student
 {
 	public:
 		GradStudent(int UnivID, string fullname, string BD, string gend, string lvl, string prog); //Prototype for constructor
+		virtual ~GradStudent(); //Prototype for destructor
 
 		void choosePrgm(string prog); //Prototype for choose graduate program function
-		string getPrgm();
+		string getPrgm() const;
 
 		virtual void print(); //Prototype for print function
-		
-		virtual ~GradStudent(); //Prototype for destructor
 
 	protected:
 		string program; //String for program

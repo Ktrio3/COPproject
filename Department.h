@@ -19,15 +19,16 @@ public:
   Department(string title);
   ~Department();
 
-  void addMember(Student *student); //Adds a student to the department
-  void addFaculty(Teacher *teacher); //Adds a teacher to department's faculty
-  Student &getMember(int num); //Returns the student at position num
-  Teacher &getFaculty(int num); //Returns the teacher at position num
-  int numMembers(); //Returns the number of students in the department
-  int numFaculty(); //Returns the number of teachers in the department
+  void addMember(Person *student); //Adds a student to the department
+  void addFaculty(Person *teacher); //Adds a teacher to department's faculty
+  void addCourse(Course *course); //Adds a course to the department
 
-  void addCourse(Course *); //Adds a course to the department
+  Person &getMember(int num); //Returns the student at position num
+  Person &getFaculty(int num); //Returns the teacher at position num
   Course &getCourse(int num); //Returns the course at position num
+
+  int numMembers(); //Returns the number of students in the departament
+  int numFaculty(); //Returns the number of teachers in the department
   int numCourses(); //Returns the number of courses
 
   void setName(string newName);
@@ -40,8 +41,8 @@ public:
 
 private:
   string name; //The name of the department i.e. Nursing
-  vector<Teacher *> faculty; //Contains the teachers in the department
-  vector<Student *> members; //Contains the students in the department
+  vector<Person *> faculty; //Contains the teachers in the department
+  vector<Person *> members; //Contains the students in the department
   vector<Course *> courses; //Contatins the courses in the department
 };
 

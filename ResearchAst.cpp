@@ -11,10 +11,13 @@
 using namespace std;
 
 //Constructor for research assistant
-ResearchAst::ResearchAst(int UnivID, string fullname, string BD, string gend, string lvl, string prog, string proj) : GradStudent(UnivID, fullname, BD, gend, lvl, prog)
+ResearchAst::ResearchAst(int UnivID, string fullname, string BD, string gend, string lvl, string prog, string proj)
+: GradStudent(UnivID, fullname, BD, gend, lvl, prog), project(proj)
 {
-	project = proj;
 }
+
+//Destructor for research assistant
+ResearchAst::~ResearchAst(){};
 
 /*************************************
 /assignProj()
@@ -32,7 +35,7 @@ void ResearchAst::assignProj(string proj)
 /Returns the project the research assistant is
 /		working on
 **************************************/
-string ResearchAst::getProj()
+string ResearchAst::getProj() const
 {
 	return project;
 }
@@ -47,6 +50,3 @@ void ResearchAst::print()
 	this->GradStudent::print();
 	cout << " Research: " << this->getProj();;
 }
-
-//Destructor for research assistant
-ResearchAst::~ResearchAst(){};

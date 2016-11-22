@@ -16,17 +16,21 @@ class Person
 {
 	public:
 		Person(int UnivID, string fullname, string BD, string gend); //Prototype for constructor
+		virtual ~Person(); //Prototype for destructor
 
+		void setUID(int UnivID);
 		int getUID() const;
 
+		void setName(string newName);
 		string getName() const;
 
+		void setBirthdate(string newBday);
 		string getBirthdate() const;
-		
+
+		void setGender(string newGender);
 		string getGender() const;
 
-		void print() const; //Prototype for print function
-		~Person(); //Prototype for destructor
+		virtual void print(); //Prototype for print function
 
 	protected:
 		int UID; //Integer for University ID number

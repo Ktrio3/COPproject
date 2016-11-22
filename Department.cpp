@@ -22,7 +22,7 @@ Department::~Department()
 /
 /Adds a Student to the department by pushing onto members vector.
 **************************************/
-void Department::addMember(Student *student)
+void Department::addMember(Person *student)
 {
   members.push_back(student);
 }
@@ -32,9 +32,19 @@ void Department::addMember(Student *student)
 /
 /Adds a Teacher to the department by pushing onto faculty vector.
 **************************************/
-void Department::addFaculty(Teacher *teacher)
+void Department::addFaculty(Person *teacher)
 {
   faculty.push_back(teacher);
+}
+
+/*************************************
+/addCourse()
+/
+/Adds a course to the department
+**************************************/
+void Department::addCourse(Course *course)
+{
+  courses.push_back(course);
 }
 
 /*************************************
@@ -42,15 +52,16 @@ void Department::addFaculty(Teacher *teacher)
 /
 /Returns the student at position num
 **************************************/
-Student &Department::getMember(int num)
+Person &Department::getMember(int num)
 {
 	if ((num >= 0) && (num <= numMembers()))
 	{
 		return *members[num];
 	}
-  	else
-  	{
-  		cerr << "Index for getting member is out of range." << endl;
+  else
+  {
+  	cerr << "Index for getting member is out of range." << endl;
+    exit(0);
 	}
 }
 
@@ -59,15 +70,34 @@ Student &Department::getMember(int num)
 /
 /Returns the teacher at position num
 **************************************/
-Teacher &Department::getFaculty(int num)
+Person &Department::getFaculty(int num)
 {
 	if ((num >= 0) && (num <= numFaculty()))
 	{
 		return *faculty[num];
 	}
-  	else
-  	{
-  		cerr << "Index for getting faculty member is out of range." << endl;
+  else
+  {
+  	cerr << "Index for getting faculty member is out of range." << endl;
+    exit(0);
+	}
+}
+
+/*************************************
+/getCourse()
+/
+/Returns the course at position num
+**************************************/
+Course &Department::getCourse(int num)
+{
+	if ((num >= 0) && (num <= numCourses()))
+	{
+		return *courses[num];
+	}
+  else
+  {
+  	cerr << "Index for getting course is out of range." << endl;
+    exit(0);
 	}
 }
 
@@ -90,35 +120,6 @@ int Department::numFaculty()
 {
   return faculty.size();
 }
-
-/*************************************
-/addCourse()
-/
-/Adds a course to the department
-**************************************/
-void Department::addCourse(Course *course)
-{
-  courses.push_back(course);
-}
-
-
-/*************************************
-/getCourse()
-/
-/Returns the course at position num
-**************************************/
-Course &Department::getCourse(int num)
-{
-	if ((num >= 0) && (num <= numCourses()))
-	{
-		return *courses[num];
-	}
-  	else
-  	{
-  		cerr << "Index for getting course is out of range." << endl;
-	}
-}
-
 
 /*************************************
 /numCourses()
@@ -170,10 +171,18 @@ void Department::print()
 **************************************/
 void Department::printMembers()
 {
-  for(Student *student : members)
+  for(Person *person : members)
   {
-    student->print();
-    cout << endl;
+    Student *student = dynamic_cast < Student * > (person);
+    if(student != nullptr)
+    {
+      student->print();
+      cout << endl;
+    }
+    else
+    {
+      person->print();
+    }
   }
 }
 
@@ -184,10 +193,18 @@ void Department::printMembers()
 **************************************/
 void Department::printFaculty()
 {
-  for(Teacher *teacher : faculty)
+  for(Person *person : faculty)
   {
-    teacher->print();
-    cout << endl;
+    Teacher *teacher = dynamic_cast < Teacher * > (person);
+    if(teacher != nullptr)
+    {
+      teacher->print();
+      cout << endl;
+    }
+    else
+    {
+      person->print();
+    }
   }
 }
 

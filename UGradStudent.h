@@ -17,14 +17,13 @@ class UGradStudent : public Student
 {
 	public:
 		UGradStudent(int UnivID, string fullname, string BD, string gend, string lvl, string maj); //Prototype for constructor
+		~UGradStudent(); //Prototype for destructor
 
 		void declareMjr(string maj); //Declares a new major for the student
 		string getMjr() const; //Returns the major the student is studying
 
 		void print(); //Prints the courses the student is in
-
-		~UGradStudent(); //Prototype for destructor
 	private:
-		string major; //string for major
+		string majorStudied; //string for major
 };
 #endif

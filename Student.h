@@ -20,9 +20,11 @@ class Student : public Person
 {
 	public:
 		Student(int UnivID, string fullname, string BD, string gend, string lvl); //Prototype for constructor
+		virtual ~Student(); //Prototype for destructor
 
 		void registerCrs(Course *course); //Registers a student for a course
-		Course *getCourse(int num); //Returns the course at position num
+		Course &getCourse(int num); //Returns the course at position num
+		void removeCourse(int num);
 		int numCourses(); //Returns the number of courses
 
 		virtual void print(); //Prints information about the student
@@ -30,8 +32,6 @@ class Student : public Person
 
 		string getLvl();
 		void setLvl(string lvl);
-
-		virtual ~Student(); //Prototype for destructor
 
 	protected:
 		string level; //String for student level (e.g. PhD, Post-BS/A)

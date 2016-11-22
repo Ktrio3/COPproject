@@ -25,12 +25,6 @@
 
 using namespace std;
 
-//Delete dynamic memory
-//Making sure files are opening
-//Check functions in classes -- ie some of the basic ones we don't use have no definition
-//Add some more silly functions
-//Clean up/style comments
-
 int main(void)
 {
   map<int, Student *> students; //May want to make map with UID as key.
@@ -78,10 +72,10 @@ int main(void)
     getline(file, gender, '|');
     getline(file, program, '|');
 
-	//try-catch for dynamic memory allocation
-	try
-	{
-	    if(role == "U")
+  	//try-catch for dynamic memory allocation
+  	try
+  	{
+      if(role == "U")
 	    {
 	      UGradStudent *student = new UGradStudent(stoi(id), name, date, gender, lvl, program);
 	      students.insert(make_pair(stoi(id), student));
@@ -99,11 +93,12 @@ int main(void)
 	      ResearchAst *student = new ResearchAst(stoi(id), name, date, gender, lvl, program, project);
 	      students.insert(make_pair(stoi(id), student));
 	    }
-	}
-	catch (bad_alloc &memoryAllocationException)
-	{
-		cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
-	}
+  	}
+  	catch (bad_alloc &memoryAllocationException)
+  	{
+  		cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
+      exit(EXIT_FAILURE);
+  	}
     getline(file, junk); //Ignore \n at end of line
   }
 
@@ -143,19 +138,19 @@ int main(void)
     getline(file, junk); //Ignore \n
 
 
-	//try-catch for dynamic memory allocation
-  Teacher *teacher;
-	try
-	{
-	    //Declare and instantiate teacher objects
-	    teacher = new Teacher(stoi(id), name, date, gender, role);
-	    teachers.insert(make_pair(stoi(id), teacher));
-	}
-	catch (bad_alloc &memoryAllocationException)
-	{
-		cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
-	}
-
+    //try-catch for dynamic memory allocation
+    Teacher *teacher;
+    try
+    {
+      //Declare and instantiate teacher objects
+      teacher = new Teacher(stoi(id), name, date, gender, role);
+      teachers.insert(make_pair(stoi(id), teacher));
+    }
+    catch (bad_alloc &memoryAllocationException)
+    {
+      cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
+      exit(EXIT_FAILURE);
+    }
   }
   file.close();
 
@@ -198,18 +193,19 @@ int main(void)
     getline(file, pupils, '|');
     getline(file, junk); //Clear \n at end of line
 
-	//try-catch for dynamic memory allocation
-  Course *course;
-	try
-	{
-	    //Declare and instantiate course objects
-	    course = new Course(subject, stoi(number), stoi(credits), lvl, title);
-	    courses.insert(make_pair(subject + ' ' + number, course));
-	}
-	catch (bad_alloc &memoryAllocationException)
-	{
-		cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
-	}
+  	//try-catch for dynamic memory allocation
+    Course *course;
+    try
+    {
+        //Declare and instantiate course objects
+        course = new Course(subject, stoi(number), stoi(credits), lvl, title);
+        courses.insert(make_pair(subject + ' ' + number, course));
+    }
+    catch (bad_alloc &memoryAllocationException)
+    {
+    	cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
+      exit(EXIT_FAILURE);
+    }
 
   	//Seperate teachers string into separate teachers
   	int start = 0;
@@ -284,7 +280,7 @@ int main(void)
   	while(end != -1 && pupils.length() != 0) //A course may not have students yet
   	{
   		token = pupils.substr(start, end - start);
-        end2 = token.find(':', 0);
+      end2 = token.find(':', 0);
   		uid_token = token.substr(0, end2); //Separate student's uid from token
   		grd_token = token.substr(end2+1, token.length() - end2+1); //Separate student's grade from token
 
@@ -351,18 +347,19 @@ int main(void)
     getline(file, crses, '|');
     getline(file, junk); //Clear \n at end of line
 
-	//try-catch for dynamic memory allocation
+    //try-catch for dynamic memory allocation
     Department *dept;
-	try
-	{
-	    //Declare and instantiate department objects
-	    dept = new Department(deptname);
-	    departments.push_back(dept);
-	}
-	catch (bad_alloc &memoryAllocationException)
-	{
-		cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
-	}
+    try
+    {
+        //Declare and instantiate department objects
+        dept = new Department(deptname);
+        departments.push_back(dept);
+    }
+    catch (bad_alloc &memoryAllocationException)
+    {
+    	cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
+      exit(EXIT_FAILURE);
+    }
 
   	//Separate fclty string into separate faculty members of department
   	int start = 0;
@@ -556,7 +553,20 @@ int main(void)
   //Add Student to the course
   cout << "Creating a new Undergrad Student named Study McFake and enrolling in "
     << testCourse->getTitle() << ":" << endl;
-  UGradStudent *newStudent = new UGradStudent(100056, "Study McFake", "01/11/1992", "M", "BS", "Computer Engineering");
+
+  //try-catch for dynamic memory allocation
+  UGradStudent *newStudent;
+  try
+  {
+      //Create new student
+      newStudent = new UGradStudent(100056, "Study McFake", "01/11/1992", "M", "BS", "Computer Engineering");
+  }
+  catch (bad_alloc &memoryAllocationException)
+  {
+    cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
+    exit(EXIT_FAILURE);
+  }
+
   students.insert(make_pair(newStudent->getUID(), newStudent)); //Add student to our map
   testCourse->addStudent(newStudent); //Add student to course
   newStudent->registerCrs(testCourse);  //Add course to students schedule
@@ -599,8 +609,19 @@ int main(void)
 
   //Add instructor to the course
   cout << "Creating a new professor named Teachy McFake and assigning to "
-    << testCourse->getTitle() << ":" << endl;
-  Teacher *newTeacher = new Teacher(100021, "Teachy McFake", "01/11/1992", "M", "Professor");
+      << testCourse->getTitle() << ":" << endl;
+  //try-catch for dynamic memory allocation
+  Teacher *newTeacher;
+  try
+  {
+      //Create new student
+      newTeacher = new Teacher(100021, "Teachy McFake", "01/11/1992", "M", "Professor");
+  }
+  catch (bad_alloc &memoryAllocationException)
+  {
+    cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
+    exit(EXIT_FAILURE);
+  }
   teachers.insert(make_pair(newTeacher->getUID(), newTeacher)); //Add teacher to our map
   testCourse->assignTeacher(newTeacher); //Add teacher to course
   newTeacher->assignCourse(testCourse);  //Add course to teachers schedule
@@ -636,7 +657,18 @@ int main(void)
   //Add TA to the course
   cout << "Creating a new TA named TA McFake and assigning to "
     << testCourse->getTitle() << ":" << endl;
-  TeachingAst *newTA = new TeachingAst(100011, "TA McFake", "01/11/1992", "M", "MS", "Cybersecurity");
+  //try-catch for dynamic memory allocation
+  TeachingAst *newTA;
+  try
+  {
+    //Create new student
+    newTA = new TeachingAst(100011, "TA McFake", "01/11/1992", "M", "MS", "Cybersecurity");
+  }
+  catch (bad_alloc &memoryAllocationException)
+  {
+    cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
+    exit(EXIT_FAILURE);
+  }
   students.insert(make_pair(newTA->getUID(), newTA)); //Add TA to our map
   testCourse->assignTA(newTA); //Add teacher to course
   newTA->assignCourse(testCourse);  //Add course to teachers schedule
@@ -656,7 +688,7 @@ int main(void)
   //Print Department members
   if(testDept != nullptr)
   {
-    cout << "Printing student member(s) for " << testDept->getName() << ":" << endl;
+    cout << "Printing student member(s) for " << testDept->getName() << " (obtained from Person *):" << endl;
     testDept->printMembers();
     cout << endl;
   }
@@ -687,7 +719,7 @@ int main(void)
   //Print Department faculty
   if(testDept != nullptr)
   {
-    cout << "Printing faculty for " << testDept->getName() << ":" << endl;
+    cout << "Printing faculty for " << testDept->getName() << " (obtained from Person *):" << endl;
     testDept->printFaculty();
     cout << endl;
   }
@@ -703,7 +735,7 @@ int main(void)
   testDept->printFaculty();
   cout << endl;
 
-  //Check if department has courses
+  //Find a department that has courses
   if(testDept->numCourses() == 0)
   {
     for(Department *department : departments) {
@@ -730,7 +762,20 @@ int main(void)
 
   //Add course to department
   cout << "Creating a new Course, Underwater Scuba Golfing, and adding to " << testDept->getName() << ":" << endl;
-  Course *newCourse = new Course("SCU", 1234, 4, "U", "Underwater Scuba Golfing");
+
+  //try-catch for dynamic memory allocation
+  Course *newCourse;
+  try
+  {
+    //Create new course
+    newCourse = new Course("SCU", 1234, 4, "U", "Underwater Scuba Golfing");
+  }
+  catch (bad_alloc &memoryAllocationException)
+  {
+    cerr << "Exception occurred: " << memoryAllocationException.what() << endl;
+    exit(EXIT_FAILURE);
+  }
+
   string newCourseKey = newCourse->getSubject() + " " + to_string(newCourse->getNumber());
   courses.insert(make_pair(newCourseKey, newCourse)); //Add Course to our map
   testDept->addCourse(newCourse); //Add course to department
@@ -759,8 +804,8 @@ int main(void)
   }
   courses.clear();
 
- for(Department *department : departments)
- {
+  for(Department *department : departments)
+  {
    delete department;
- }
+  }
 }

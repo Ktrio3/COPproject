@@ -12,10 +12,15 @@ using namespace std;
 
 //Constructor for graduate student
 GradStudent::GradStudent(int UnivID, string fullname, string BD, string gend, string lvl, string prog)
-: Student(UnivID, fullname, BD, gend, lvl)
+: Student(UnivID, fullname, BD, gend, lvl), program(prog)
 {
-	program = prog;
 }
+
+//Destructor for graduate student
+GradStudent::~GradStudent()
+{
+};
+
 
 /*************************************
 /choosePrgm()
@@ -32,7 +37,7 @@ void GradStudent::choosePrgm(string prog)
 /
 /Returns the program the Grad Student is in
 **************************************/
-string GradStudent::getPrgm()
+string GradStudent::getPrgm() const
 {
 	return program;
 }
@@ -47,6 +52,3 @@ void GradStudent::print()
 	this->Student::print();
 	cout << " Program: " << this->getPrgm();
 }
-
-//Destructor for graduate student
-GradStudent::~GradStudent(){};

@@ -11,9 +11,24 @@
 #include "Teacher.h"
 
 //Constructor for teacher
-Teacher::Teacher(int UnivID, string fullname, string BD, string gend, string rol) : Person(UnivID, fullname, BD, gend)
+Teacher::Teacher(int UnivID, string fullname, string BD, string gend, string rol)
+: Person(UnivID, fullname, BD, gend), role(rol)
 {
-	role = rol;
+}
+
+//Destructor for teacher
+Teacher::~Teacher()
+{
+}
+
+/*************************************
+/setRole()
+/
+/Sets the teachers role
+**************************************/
+void Teacher::setRole(string newRole)
+{
+	role = newRole;
 }
 
 /*************************************
@@ -27,13 +42,49 @@ string Teacher::getRole()
 }
 
 /*************************************
-/assignCrs()
+/assignCourse()
 /
 /Adds a course to the students schedule
 **************************************/
 void Teacher::assignCourse(Course *course)
 {
-	Lectures.push_back(course);
+	lectures.push_back(course);
+}
+
+/*************************************
+/getCourse()
+/
+/Returns the course
+**************************************/
+Course &Teacher::getCourse(int num)
+{
+	if ((num >= 0) && (num <= numCourses()))
+	{
+		return *lectures[num];
+	}
+  else
+  {
+  		cerr << "Index for getting course is out of range." << endl;
+			exit(0);
+	}
+}
+
+/*************************************
+/removeCourse()
+/
+/Returns the course
+**************************************/
+void Teacher::removeCourse(int num)
+{
+	if ((num >= 0) && (num <= numCourses()))
+	{
+		lectures.erase(lectures.begin() + num);
+	}
+	else
+	{
+		cerr << "Index for removing course is out of range." << endl;
+		exit(0);
+	}
 }
 
 /*************************************
@@ -43,7 +94,7 @@ void Teacher::assignCourse(Course *course)
 **************************************/
 int Teacher::numCourses()
 {
-  return Lectures.size();
+  return lectures.size();
 }
 
 /*************************************
@@ -66,9 +117,6 @@ void Teacher::printCourses()
 {
 	for (int i = 0; i < numCourses(); i++)
 	{
-		cout << Lectures[i]->getSubject() << " " << Lectures[i]->getNumber() << endl;
+		cout << lectures[i]->getSubject() << " " << lectures[i]->getNumber() << endl;
 	}
 }
-
-//Destructor for teacher
-Teacher::~Teacher(){};

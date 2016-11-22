@@ -14,7 +14,21 @@ using namespace std;
 
 //Constructor for TA
 TeachingAst::TeachingAst(int UnivID, string fullname, string BD, string gend, string lvl, string prog)
-: GradStudent(UnivID, fullname, BD, gend, lvl, prog){}
+: GradStudent(UnivID, fullname, BD, gend, lvl, prog)
+{}
+
+//Destructor for TA
+TeachingAst::~TeachingAst(){}
+
+/*************************************
+/assignCourse()
+/
+/Assigns acourse to the TA
+**************************************/
+void TeachingAst::assignCourse(Course * course)
+{
+	TACourses.push_back(course);
+}
 
 /*************************************
 /getTACourse()
@@ -26,9 +40,22 @@ Course &TeachingAst::getTACourse(int num)
 	return *TACourses[num];
 }
 
-void TeachingAst::assignCourse(Course * course)
+/*************************************
+/removeTACourse()
+/
+/Returns the course
+**************************************/
+void TeachingAst::removeTACourse(int num)
 {
-	TACourses.push_back(course);
+	if ((num >= 0) && (num <= numCourses()))
+	{
+		TACourses.erase(TACourses.begin() + num);
+	}
+	else
+	{
+		cerr << "Index for removing course is out of range." << endl;
+		exit(0);
+	}
 }
 
 /*************************************
@@ -63,6 +90,3 @@ void TeachingAst::printTACourses()
 		cout << TACourses[i]->getSubject() << " " << TACourses[i]->getNumber() << endl;
 	}
 }
-
-//Destructor for TA
-TeachingAst::~TeachingAst(){};
