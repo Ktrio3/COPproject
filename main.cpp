@@ -109,31 +109,6 @@ int main(void)
 
   file.close();
 
-  //Print students
-  cout << "Scanned in the following students from Students.txt:\n";
-  for(student_iter iterator = students.begin(); iterator != students.end(); iterator++) {
-    //Test if undergraduate student
-    UGradStudent *underStudent = dynamic_cast < UGradStudent * > (iterator->second);
-    if(underStudent != nullptr)
-    {
-      underStudent->print();
-    }
-
-    TeachingAst *TA = dynamic_cast < TeachingAst * > (iterator->second);
-    if(TA != nullptr)
-    {
-      TA->print();
-    }
-
-    ResearchAst *RA = dynamic_cast < ResearchAst * > (iterator->second);
-    if(RA != nullptr)
-    {
-      RA->print();
-    }
-    cout << "\n";
-  }
-  cout << "\n";
-
   //Open Teachers.txt file
   file.open("Teachers.txt");
 
@@ -183,18 +158,6 @@ int main(void)
 
   }
   file.close();
-
-  //Print teachers
-  cout << "Scanned in the following teachers from Teachers.txt:\n";
-  for(teacher_iter iterator_t = teachers.begin(); iterator_t != teachers.end(); iterator_t++) {
-  	Teacher *teach = iterator_t->second;
-    if(teach != nullptr)
-    {
-      teach->print();
-      cout << endl;
-    }
-  }
-  cout << endl;
 
   //Open Courses.txt file
   file.open("Courses.txt");
@@ -357,18 +320,6 @@ int main(void)
 
   file.close();
 
-  //Print courses
-  cout << "Scanned in the following courses from Courses.txt:\n";
-  for(course_iter iterator_t = courses.begin(); iterator_t != courses.end(); iterator_t++) {
-  	Course *course = iterator_t->second;
-    if(course != nullptr)
-    {
-      course->print();
-      cout << endl;
-    }
-  }
-  cout << endl;
-
   //Read in departments
   file.open("Departments.txt");
 
@@ -401,7 +352,7 @@ int main(void)
     getline(file, junk); //Clear \n at end of line
 
 	//try-catch for dynamic memory allocation
-  Department *dept;
+    Department *dept;
 	try
 	{
 	    //Declare and instantiate department objects
@@ -501,6 +452,66 @@ int main(void)
   }
 
   file.close();
+  
+  //Print students
+  cout << "Scanned in the following students from Students.txt:\n";
+  for(student_iter iterator = students.begin(); iterator != students.end(); iterator++) {
+    //Test if undergraduate student
+    UGradStudent *underStudent = dynamic_cast < UGradStudent * > (iterator->second);
+    if(underStudent != nullptr)
+    {
+      underStudent->print();
+      cout << "Schedule:" << endl;
+      underStudent->printCourses();
+    }
+
+    TeachingAst *TA = dynamic_cast < TeachingAst * > (iterator->second);
+    if(TA != nullptr)
+    {
+      TA->print();
+      cout << "Schedule:" << endl;
+      TA->printCourses();
+      cout << "Courses TA for:" << endl;
+      TA->printTACourses();
+    }
+
+    ResearchAst *RA = dynamic_cast < ResearchAst * > (iterator->second);
+    if(RA != nullptr)
+    {
+      RA->print();
+      cout << "Schedule:" << endl;
+      RA->printCourses();
+    }
+    cout << "\n";
+  }
+  cout << "\n";  
+  
+  //Print teachers
+  cout << "Scanned in the following teachers from Teachers.txt:\n";
+  for(teacher_iter iterator_t = teachers.begin(); iterator_t != teachers.end(); iterator_t++) {
+  	Teacher *teach = iterator_t->second;
+    if(teach != nullptr)
+    {
+      teach->print();
+      cout << "Courses Teaching:" << endl;
+      teach->printCourses();
+      cout << endl;
+    }
+  }
+  cout << endl;
+  
+  //Print courses
+  cout << "Scanned in the following courses from Courses.txt:\n";
+  for(course_iter iterator_t = courses.begin(); iterator_t != courses.end(); iterator_t++) {
+  	Course *course = iterator_t->second;
+    if(course != nullptr)
+    {
+      course->print();
+      cout << endl;
+    }
+  }
+  cout << endl;
+  
   //Print departments
   cout << "Scanned in the following departments from Departments.txt:\n";
   for(Department *department : departments)
