@@ -51,6 +51,9 @@ int main(void)
   	exit (EXIT_FAILURE);
   }
 
+  string junk; //Used to discard extra \n char at end of line and header file
+  getline(file, junk); //Ignore header line in file
+
   //Read in student
   while(true)
   {
@@ -62,8 +65,6 @@ int main(void)
     string date;
     string gender;
     string program = "";
-
-    string junk; //Used to discard extra \n char at end of line
 
     getline(file, name, '|');
 
@@ -143,6 +144,8 @@ int main(void)
   	exit (EXIT_FAILURE);
   }
 
+  getline(file, junk); //Ignore header line in file
+
   //Read in teachers
   while(true)
   {
@@ -152,7 +155,6 @@ int main(void)
     string id;
     string date;
     string gender;
-    string junk; //Used to discard extra \n char at end of line
 
     getline(file, name, '|');
 
@@ -204,6 +206,8 @@ int main(void)
   	exit (EXIT_FAILURE);
   }
 
+  getline(file, junk); //Ignore header line in file
+
   //Read in courses
   while(true)
   {
@@ -216,7 +220,6 @@ int main(void)
     string instructors;
     string teachAsts;
     string pupils;
-    string junk; //Used to discard extra \n char at end of line
 
     getline(file, subject, '|');
 
@@ -254,7 +257,12 @@ int main(void)
   	while (end != -1 && instructors.length() != 0)
   	{
   		token = instructors.substr(start, end - start);
-  		course->assignTeacher(teachers[stoi(token)]);	//Assign each teacher to course based on UID
+      Teacher *newTeach = teachers[stoi(token)];
+      if(newTeach != nullptr)
+      {
+        course->assignTeacher(newTeach);	//Assign each teacher to course based on UID
+        newTeach->assignCourse(course);
+      }
 
       start = end + 1;
       end = instructors.find(',', start);
@@ -264,7 +272,12 @@ int main(void)
     if(end == -1 && pupils.length() != 0)
     {
       token = instructors.substr(start, instructors.length() - start);
-      course->assignTeacher(teachers[stoi(token)]);
+      Teacher *newTeach = teachers[stoi(token)];
+      if(newTeach != nullptr)
+      {
+        course->assignTeacher(newTeach);	//Assign each teacher to course based on UID
+        newTeach->assignCourse(course);
+      }
     }
 
 	  //Seperate teachAsts string into separate TAs
@@ -281,6 +294,7 @@ int main(void)
       if(TA != nullptr)
       {
         course->assignTA(TA);	//Assign each TA to course based on UID
+        TA->assignCourse(course);
       }
     }
 
@@ -293,6 +307,7 @@ int main(void)
       if(TA != nullptr)
       {
         course->assignTA(TA);	//Assign each TA to course based on UID]
+        TA->assignCourse(course);
       }
     }
 
@@ -310,11 +325,14 @@ int main(void)
   		uid_token = token.substr(0, end2); //Separate student's uid from token
   		grd_token = token.substr(end2+1, token.length() - end2+1); //Separate student's grade from token
 
-  		course->addStudent(students[stoi(uid_token)]);	//Add each student to course roster based on UID
-  		course->assignGrade(stoi(uid_token), stoi(grd_token)); //Add student's grade to course's gradebook
+      Student *newStudent = students[stoi(uid_token)];
 
-      students[stoi(uid_token)]->registerCrs(course);  //Add course to students schedule
-
+      if(newStudent != nullptr)
+      {
+        course->addStudent(newStudent);	//Add each student to course roster based on UID
+    		course->assignGrade(stoi(uid_token), stoi(grd_token)); //Add student's grade to course's gradebook
+        students[stoi(uid_token)]->registerCrs(course);  //Add course to students schedule
+      }
       start = end + 1;
       end = pupils.find(',', start);
     }
@@ -327,10 +345,13 @@ int main(void)
   		uid_token = token.substr(0, end2); //Separate student's uid from token
   		grd_token = token.substr(end2+1, token.length() - end2+1); //Separate student's grade from token
 
-      course->addStudent(students[stoi(uid_token)]);	//Add each student to course roster based on UID
-  		course->assignGrade(stoi(uid_token), stoi(grd_token)); //Add student's grade to course's gradebook
-
-      students[stoi(uid_token)]->registerCrs(course);  //Add course to students schedule
+      Student *newStudent = students[stoi(uid_token)];
+      if(newStudent != nullptr)
+      {
+        course->addStudent(newStudent);	//Add each student to course roster based on UID
+    		course->assignGrade(stoi(uid_token), stoi(grd_token)); //Add student's grade to course's gradebook
+        students[stoi(uid_token)]->registerCrs(course);  //Add course to students schedule
+      }
     }
   }
 
@@ -358,6 +379,8 @@ int main(void)
   	exit (EXIT_FAILURE);
   }
 
+  getline(file, junk); //Ignore header line in file
+
   //Read in department
   while(true)
   {
@@ -366,7 +389,6 @@ int main(void)
     string fclty;
     string mems;
     string crses;
-    string junk; //Used to discard extra \n char at end of line
 
     getline(file, deptname, '|');
 
@@ -398,7 +420,11 @@ int main(void)
   	while (end != -1 && fclty.length() != 0)
   	{
   		string token = fclty.substr(start, end - start);
-  		dept->addFaculty(teachers[stoi(token)]);	//Assign each teacher to dept's faculty based on UID
+      Teacher *newTeach = teachers[stoi(token)];
+      if(newTeach)
+      {
+        dept->addFaculty(newTeach);	//Assign each teacher to dept's faculty based on UID
+      }
 
       start = end + 1;
       end = fclty.find(',', start);
@@ -408,7 +434,11 @@ int main(void)
     if(end == -1 && crses.length() != 0)
     {
       string token = fclty.substr(start, fclty.length() - start);
-      dept->addFaculty(teachers[stoi(token)]);
+      Teacher *newTeach = teachers[stoi(token)];
+      if(newTeach)
+      {
+        dept->addFaculty(newTeach);	//Assign each teacher to dept's faculty based on UID
+      }
     }
 
     //Separate mems string into separate student members of department
@@ -418,7 +448,12 @@ int main(void)
   	while (end != -1 && mems.length() != 0)
   	{
   		string token = mems.substr(start, end - start);
-  		dept->addMember(students[stoi(token)]);	//Assign each student to dept based on UID
+
+      Student *newStudent = students[stoi(token)];
+      if(newStudent)
+      {
+        dept->addMember(newStudent);	//Assign each student to dept based on UID
+      }
 
       start = end + 1;
       end = mems.find(',', start);
@@ -428,7 +463,11 @@ int main(void)
     if(end == -1 && crses.length() != 0)
     {
       string token = mems.substr(start, mems.length() - start);
-      dept->addMember(students[stoi(token)]);
+      Student *newStudent = students[stoi(token)];
+      if(newStudent)
+      {
+        dept->addMember(newStudent);	//Assign each student to dept based on UID
+      }
     }
 
     //Separate crses string into separate courses for department
@@ -438,9 +477,13 @@ int main(void)
   	while (end != -1 && crses.length() != 0)
   	{
   		string token = crses.substr(start, end - start);
-  		dept->addCourse(courses[token]);	//Assign each student to dept based on UID
-		//(Note: Need to make courses vector into map for this to work... can 1st element of map be a string?.. can we merge subj and crs #?
-      start = end + 1;
+      Course *newCourse = courses[token];
+
+      if(newCourse)
+      {
+        dept->addCourse(newCourse);	//Assign each student to dept based on UID
+      }
+		  start = end + 1;
       end = crses.find(',', start);
     }
 
@@ -448,7 +491,12 @@ int main(void)
     if(end == -1 && crses.length() != 0)
     {
       string token = crses.substr(start, crses.length() - start);
-      dept->addCourse(courses[token]);//    (Same issue as above)
+      Course *newCourse = courses[token];
+
+      if(newCourse)
+      {
+        dept->addCourse(newCourse);	//Assign each student to dept based on UID
+      }
     }
   }
 
@@ -495,10 +543,10 @@ int main(void)
   //Add Student to the course
   cout << "Creating a new Undergrad Student named Study McFake and enrolling in "
     << testCourse->getTitle() << ":" << endl;
-  UGradStudent newStudent = UGradStudent(100056, "Study McFake", "01/11/1992", "M", "BS", "Computer Engineering");
-  students.insert(make_pair(newStudent.getUID(), &newStudent)); //Add student to our map
-  testCourse->addStudent(&newStudent); //Add student to course
-  newStudent.registerCrs(testCourse);  //Add course to students schedule
+  UGradStudent *newStudent = new UGradStudent(100056, "Study McFake", "01/11/1992", "M", "BS", "Computer Engineering");
+  students.insert(make_pair(newStudent->getUID(), newStudent)); //Add student to our map
+  testCourse->addStudent(newStudent); //Add student to course
+  newStudent->registerCrs(testCourse);  //Add course to students schedule
   testCourse->printRoster();
   cout << endl;
 
@@ -539,10 +587,10 @@ int main(void)
   //Add instructor to the course
   cout << "Creating a new professor named Teachy McFake and assigning to "
     << testCourse->getTitle() << ":" << endl;
-  Teacher newTeacher = Teacher(100021, "Teachy McFake", "01/11/1992", "M", "Professor");
-  teachers.insert(make_pair(newTeacher.getUID(), &newTeacher)); //Add teacher to our map
-  testCourse->assignTeacher(&newTeacher); //Add teacher to course
-  newTeacher.assignCourse(testCourse);  //Add course to teachers schedule
+  Teacher *newTeacher = new Teacher(100021, "Teachy McFake", "01/11/1992", "M", "Professor");
+  teachers.insert(make_pair(newTeacher->getUID(), newTeacher)); //Add teacher to our map
+  testCourse->assignTeacher(newTeacher); //Add teacher to course
+  newTeacher->assignCourse(testCourse);  //Add course to teachers schedule
   testCourse->printTeachers();
   cout << endl;
 
@@ -575,10 +623,10 @@ int main(void)
   //Add TA to the course
   cout << "Creating a new TA named TA McFake and assigning to "
     << testCourse->getTitle() << ":" << endl;
-  TeachingAst newTA = TeachingAst(100011, "TA McFake", "01/11/1992", "M", "MS", "Cybersecurity");
-  students.insert(make_pair(newTA.getUID(), &newTA)); //Add TA to our map
-  testCourse->assignTA(&newTA); //Add teacher to course
-  newTA.assignCourse(testCourse);  //Add course to teachers schedule
+  TeachingAst *newTA = new TeachingAst(100011, "TA McFake", "01/11/1992", "M", "MS", "Cybersecurity");
+  students.insert(make_pair(newTA->getUID(), newTA)); //Add TA to our map
+  testCourse->assignTA(newTA); //Add teacher to course
+  newTA->assignCourse(testCourse);  //Add course to teachers schedule
   testCourse->printTAs();
   cout << endl;
 
@@ -607,7 +655,7 @@ int main(void)
 
   //Add member to department
   cout << "Adding Study McFake to " << testDept->getName() << ":" << endl;
-  testDept->addMember(&newStudent);
+  testDept->addMember(newStudent);
   testDept->printMembers();
   cout << endl;
 
@@ -638,7 +686,7 @@ int main(void)
 
   //Add faculty to department
   cout << "Adding Teachy McFake to " << testDept->getName() << ":" << endl;
-  testDept->addFaculty(&newTeacher);
+  testDept->addFaculty(newTeacher);
   testDept->printFaculty();
   cout << endl;
 
@@ -669,37 +717,37 @@ int main(void)
 
   //Add course to department
   cout << "Creating a new Course, Underwater Scuba Golfing, and adding to " << testDept->getName() << ":" << endl;
-  Course newCourse = Course("SCU", 1234, 4, "U", "Underwater Scuba Golfing");
-  string newCourseKey = newCourse.getSubject() + " " + to_string(newCourse.getNumber());
-  courses.insert(make_pair(newCourseKey, &newCourse)); //Add Course to our map
-  testDept->addCourse(&newCourse); //Add course to department
+  Course *newCourse = new Course("SCU", 1234, 4, "U", "Underwater Scuba Golfing");
+  string newCourseKey = newCourse->getSubject() + " " + to_string(newCourse->getNumber());
+  courses.insert(make_pair(newCourseKey, newCourse)); //Add Course to our map
+  testDept->addCourse(newCourse); //Add course to department
   testDept->printCourses();
   cout << endl;
 
   //Delete dynamically allocated memory for students, teachers, courses, and departments
-    for (student_iter iterator_t = students.begin(); iterator_t != students.end(); iterator_t++)
-	{
-    	Student *student = iterator_t->second;
-    	delete student;
-    }
-    students.clear();
+  for (student_iter iterator_t = students.begin(); iterator_t != students.end(); iterator_t++)
+  {
+  	Student *student = iterator_t->second;
+  	delete student;
+  }
+  students.clear();
 
-    for (teacher_iter iterator_t = teachers.begin(); iterator_t != teachers.end(); iterator_t++)
-	{
-    	Teacher *teacher = iterator_t->second;
-    	delete teacher;
-    }
-    teachers.clear();
+  for (teacher_iter iterator_t = teachers.begin(); iterator_t != teachers.end(); iterator_t++)
+  {
+  	Teacher *teacher = iterator_t->second;
+  	delete teacher;
+  }
+  teachers.clear();
 
-    for (course_iter iterator_t = courses.begin(); iterator_t != courses.end(); iterator_t++)
-	{
-    	Course *course = iterator_t->second;
-    	delete course;
-    }
-    courses.clear();
+  for (course_iter iterator_t = courses.begin(); iterator_t != courses.end(); iterator_t++)
+  {
+  	Course *course = iterator_t->second;
+  	delete course;
+  }
+  courses.clear();
 
-   for(Department *department : departments)
-   {
-     delete department;
-   }
+ for(Department *department : departments)
+ {
+   delete department;
+ }
 }
