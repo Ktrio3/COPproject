@@ -36,9 +36,9 @@ void TeachingAst::assignCourse(Course * course)
 /
 /Returns the number of  courses the TA is a TA for
 **************************************/
-int Teacher::numTACourses()
+int TeachingAst::numTACourses()
 {
-  return TACourses.size();
+	return TACourses.size();
 }
 
 /*************************************
@@ -58,7 +58,7 @@ void TeachingAst::print()
 **************************************/
 void TeachingAst::printTACourses()
 {
-	for (int i = 0, int <= numTACourses(), i++)
+	for (int i = 0; i <= numTACourses()-1; i++)
 	{
 		cout << TACourses[i]->getSubject() << " " << TACourses[i]->getNumber() << endl;
 	}

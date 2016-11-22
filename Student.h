@@ -22,7 +22,7 @@ class Student : public Person
 		Student(int UnivID, string fullname, string BD, string gend, string lvl); //Prototype for constructor
 
 		void registerCrs(Course *course); //Registers a student for a course
-		Course &getCourse(int num); //Returns the course at position num
+		Course *getCourse(int num); //Returns the course at position num
 		int numCourses(); //Returns the number of courses
 
 		virtual void print(); //Prints information about the student
@@ -35,6 +35,6 @@ class Student : public Person
 
 	protected:
 		string level; //String for student level (e.g. PhD, Post-BS/A)
-		vector< const Course *> schedule; //Vector of courses the student is registered for
+		vector< Course *> schedule; //Vector of courses the student is registered for
 };
 #endif

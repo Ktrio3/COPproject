@@ -64,7 +64,7 @@ void Teacher::print()
 **************************************/
 void Teacher::printCourses()
 {
-	for (int i = 0, int <= numCourses(), i++)
+	for (int i = 0; i <= numCourses()-1; i++)
 	{
 		cout << Lectures[i]->getSubject() << " " << Lectures[i]->getNumber() << endl;
 	}

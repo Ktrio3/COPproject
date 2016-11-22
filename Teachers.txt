@@ -1,5 +1,0 @@
-FORMAT: NAME|POSITION|UID|BIRTHDATE|GENDER|
-Jose Galvis|Adjunct|123456789|12/12/1980|M|
-Kenneth Christensen|Professor|789451263|8/21/1972|M|
-Vera Kool|Lecturer|222222222|11/11/1991|F|
-Emily Jones|Professor|888888888|08/16/1965|F|

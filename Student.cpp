@@ -33,11 +33,11 @@ void Student::registerCrs(Course *course)
 /
 /Returns the course at position num
 **************************************/
-Course &Student::getCourse(int num)
+Course *Student::getCourse(int num)
 {
 	if ((num >= 0) && (num <= numCourses()))
 	{
-		return *schedule[num];
+		return schedule[num];
 	}
   	else
   	{
@@ -73,7 +73,7 @@ void Student::print()
 **************************************/
 void Student::printCourses()
 {
-	for (int i = 0, int <= numCourses(), i++)
+	for (int i = 0; i <= numCourses()-1; i++)
 	{
 		cout << schedule[i]->getSubject() << " " << schedule[i]->getNumber() << endl;
 	}
