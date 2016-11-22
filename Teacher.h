@@ -25,8 +25,8 @@ class Teacher : public Person
 
 		void setRole(string newRole);
 		string getRole();
-
-		void assignCourse(Course *); //Assigns a lecture course to the teacher
+		
+		void assignCourse(Course *course); //Assigns a lecture course to the teacher
 		Course &getCourse(int num);	//Returns the course at position num
 		void removeCourse(int num); //Removes a course
 		int numCourses(); //Returns the number of courses the teacher is assigned to

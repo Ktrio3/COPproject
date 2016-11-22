@@ -32,7 +32,6 @@ class TeachingAst : public GradStudent
 		void printTACourses(); //Prints courses the TA is assigned to
 
 	protected:
-		string project; //string for program
 		vector< Course *> TACourses; //Vector of courses the teaching assistant is a TA for
 
 };

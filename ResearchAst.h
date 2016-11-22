@@ -25,7 +25,7 @@ class ResearchAst : public GradStudent
 		virtual void print(); //Prototype for print function
 
 	protected:
-		string project; //string for program
+		string project; //string for project
 
 };
 #endif
