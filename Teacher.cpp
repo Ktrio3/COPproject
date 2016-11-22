@@ -37,6 +37,16 @@ void Teacher::assignCourse(Course *course)
 }
 
 /*************************************
+/numCourses()
+/
+/Returns the number of  courses the teacher is teaching
+**************************************/
+int Teacher::numCourses()
+{
+  return Lectures.size();
+}
+
+/*************************************
 /print()
 /
 /Prints information about the teacher
@@ -54,7 +64,10 @@ void Teacher::print()
 **************************************/
 void Teacher::printCourses()
 {
-
+	for (int i = 0, int <= numCourses(), i++)
+	{
+		cout << Lectures[i]->getSubject() << " " << Lectures[i]->getNumber() << endl;
+	}
 }
 
 //Destructor for teacher

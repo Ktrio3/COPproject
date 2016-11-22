@@ -44,7 +44,14 @@ void Department::addFaculty(Teacher *teacher)
 **************************************/
 Student &Department::getMember(int num)
 {
-  return *members[num];
+	if ((num >= 0) && (num <= numMembers()))
+	{
+		return *members[num];
+	}
+  	else
+  	{
+  		cerr << "Index for getting member is out of range." << endl;
+	}
 }
 
 /*************************************
@@ -54,7 +61,14 @@ Student &Department::getMember(int num)
 **************************************/
 Teacher &Department::getFaculty(int num)
 {
-  return *faculty[num];
+	if ((num >= 0) && (num <= numFaculty()))
+	{
+		return *faculty[num];
+	}
+  	else
+  	{
+  		cerr << "Index for getting faculty member is out of range." << endl;
+	}
 }
 
 /*************************************
@@ -95,7 +109,14 @@ void Department::addCourse(Course *course)
 **************************************/
 Course &Department::getCourse(int num)
 {
-  return *courses[num];
+	if ((num >= 0) && (num <= numCourses()))
+	{
+		return *courses[num];
+	}
+  	else
+  	{
+  		cerr << "Index for getting course is out of range." << endl;
+	}
 }
 
 

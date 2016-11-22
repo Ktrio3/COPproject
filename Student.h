@@ -22,7 +22,8 @@ class Student : public Person
 		Student(int UnivID, string fullname, string BD, string gend, string lvl); //Prototype for constructor
 
 		void registerCrs(Course *course); //Registers a student for a course
-		Course &getSchedule(int num); //Returns the course at position num
+		Course &getCourse(int num); //Returns the course at position num
+		int numCourses(); //Returns the number of courses
 
 		virtual void print(); //Prints information about the student
 		void printCourses();	//Prints courses the student is enrolled in

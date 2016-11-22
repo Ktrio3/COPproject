@@ -29,6 +29,33 @@ void Student::registerCrs(Course *course)
 }
 
 /*************************************
+/getCourse()
+/
+/Returns the course at position num
+**************************************/
+Course &Student::getCourse(int num)
+{
+	if ((num >= 0) && (num <= numCourses()))
+	{
+		return *schedule[num];
+	}
+  	else
+  	{
+  		cerr << "Index for getting course is out of range." << endl;
+	}
+}
+
+/*************************************
+/numCourses()
+/
+/Returns the number of  courses the student is enrolled in
+**************************************/
+int Student::numCourses()
+{
+  return schedule.size();
+}
+
+/*************************************
 /print()
 /
 /Prints information about the student
@@ -37,6 +64,19 @@ void Student::print()
 {
 	this->Person::print();
 	cout << " Degree Type: " << level;
+}
+
+/*************************************
+/printCourses()
+/
+/Prints information about the student
+**************************************/
+void Student::printCourses()
+{
+	for (int i = 0, int <= numCourses(), i++)
+	{
+		cout << schedule[i]->getSubject() << " " << schedule[i]->getNumber() << endl;
+	}
 }
 
 /*************************************

@@ -25,6 +25,7 @@ class TeachingAst : public GradStudent
 		Course &getTACourse(int num); //Returns the course at postion num
 
 		void assignCourse(Course * course); //Assigns the TA to a course
+		int numTACourses(); //Returns number of courses is the TA 
 
 		virtual void print(); //Prints information about the TA
 		void printTACourses(); //Prints courses the TA is assigned to

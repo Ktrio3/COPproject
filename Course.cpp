@@ -113,7 +113,14 @@ TeachingAst &Course::getTA(int num)
 **************************************/
 void Course::removeTeacher(int num)
 {
-  instructors.erase(instructors.begin() + num);
+	if ((num >= 0) && (num <= numTeachers()))
+	{
+		instructors.erase(instructors.begin() + num);
+	}
+  	else
+  	{
+  		cerr << "Index for getting teacher is out of range." << endl;
+	}
 }
 
 /*************************************
