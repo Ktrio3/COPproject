@@ -1,3 +1,4 @@
+FORMAT: NAME|DEGREETYPE|LEVEL|UID|BIRTHDATE|GENDER|MAJOR|
 Kevin Dennis|BS|U|987654321|11/03/1995|M|Computer Science|
 Ahmad Babeian Jelodar|PHD|TA|992837465|01/23/1990|M|Artificial Intelligence|
 Vasthy Peralta|BS|U|564738291|07/07/1991|F|Computer Science|
